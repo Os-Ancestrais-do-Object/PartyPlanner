@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PartyPlanner.WinApp", "PartyPlanner.WinApp\PartyPlanner.WinApp.csproj", "{D507BBBD-035A-4CF3-8BC4-231671193C96}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Apresentacao", "1 - Apresentacao", "{A180E902-C566-4814-8141-8140471B5CD8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Dominio", "2 - Dominio", "{7FFD697A-467C-40C8-940F-7FEC21EF5B50}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Dados", "3 - Dados", "{ACFDAFE1-C9BE-446D-954E-9939FF2CDA35}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartyPlanner.Dominio", "PartyPlanner.Dominio\PartyPlanner.Dominio.csproj", "{2740AD54-17CA-40DD-B004-4A6926AD19C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartyPlanner.Dados", "PartyPlanner.Dados\PartyPlanner.Dados.csproj", "{7763DC72-F840-4D1E-B675-A85C69147778}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D507BBBD-035A-4CF3-8BC4-231671193C96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D507BBBD-035A-4CF3-8BC4-231671193C96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D507BBBD-035A-4CF3-8BC4-231671193C96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D507BBBD-035A-4CF3-8BC4-231671193C96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2740AD54-17CA-40DD-B004-4A6926AD19C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2740AD54-17CA-40DD-B004-4A6926AD19C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2740AD54-17CA-40DD-B004-4A6926AD19C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2740AD54-17CA-40DD-B004-4A6926AD19C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7763DC72-F840-4D1E-B675-A85C69147778}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7763DC72-F840-4D1E-B675-A85C69147778}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7763DC72-F840-4D1E-B675-A85C69147778}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7763DC72-F840-4D1E-B675-A85C69147778}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D507BBBD-035A-4CF3-8BC4-231671193C96} = {A180E902-C566-4814-8141-8140471B5CD8}
+		{2740AD54-17CA-40DD-B004-4A6926AD19C0} = {7FFD697A-467C-40C8-940F-7FEC21EF5B50}
+		{7763DC72-F840-4D1E-B675-A85C69147778} = {ACFDAFE1-C9BE-446D-954E-9939FF2CDA35}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {082C6838-A41D-4074-93F5-BDE599E3BCD6}
+	EndGlobalSection
+EndGlobal
