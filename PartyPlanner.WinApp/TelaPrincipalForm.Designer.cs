@@ -28,12 +28,225 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaPrincipalForm));
+            toolStrip1 = new ToolStrip();
+            btnCliente = new ToolStripButton();
+            btnFesta = new ToolStripButton();
+            btnTema = new ToolStripButton();
+            btnAluguel = new ToolStripButton();
+            toolStrip2 = new ToolStrip();
+            btnAdicionar = new ToolStripButton();
+            btnEditar = new ToolStripButton();
+            btnExcluir = new ToolStripButton();
+            toolStripSeparator1 = new ToolStripSeparator();
+            lbTipoCadastro = new ToolStripLabel();
+            statusStrip1 = new StatusStrip();
+            lbStatus = new ToolStripStatusLabel();
+            plPrincipal = new Panel();
+            toolStrip1.SuspendLayout();
+            toolStrip2.SuspendLayout();
+            statusStrip1.SuspendLayout();
+            SuspendLayout();
+            // 
+            // toolStrip1
+            // 
+            toolStrip1.BackColor = Color.FromArgb(0, 100, 165);
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnCliente, btnFesta, btnTema, btnAluguel });
+            toolStrip1.Location = new Point(0, 0);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new Size(1013, 68);
+            toolStrip1.TabIndex = 0;
+            toolStrip1.Text = "toolStrip1";
+            // 
+            // btnCliente
+            // 
+            btnCliente.BackColor = Color.FromArgb(0, 100, 165);
+            btnCliente.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            btnCliente.Font = new Font("Tahoma", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCliente.ForeColor = Color.White;
+            btnCliente.Image = (Image)resources.GetObject("btnCliente.Image");
+            btnCliente.ImageTransparentColor = Color.Magenta;
+            btnCliente.Margin = new Padding(15);
+            btnCliente.Name = "btnCliente";
+            btnCliente.Padding = new Padding(5);
+            btnCliente.RightToLeft = RightToLeft.No;
+            btnCliente.Size = new Size(86, 38);
+            btnCliente.Text = "Cliente";
+            btnCliente.TextDirection = ToolStripTextDirection.Horizontal;
+            btnCliente.Click += btnCliente_Click;
+            // 
+            // btnFesta
+            // 
+            btnFesta.BackColor = Color.FromArgb(0, 100, 165);
+            btnFesta.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            btnFesta.Font = new Font("Tahoma", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            btnFesta.ForeColor = Color.White;
+            btnFesta.Image = (Image)resources.GetObject("btnFesta.Image");
+            btnFesta.ImageTransparentColor = Color.Magenta;
+            btnFesta.Margin = new Padding(15);
+            btnFesta.Name = "btnFesta";
+            btnFesta.Padding = new Padding(5);
+            btnFesta.RightToLeft = RightToLeft.No;
+            btnFesta.Size = new Size(72, 38);
+            btnFesta.Text = "Festa";
+            btnFesta.TextDirection = ToolStripTextDirection.Horizontal;
+            btnFesta.Click += btnFesta_Click;
+            // 
+            // btnTema
+            // 
+            btnTema.BackColor = Color.FromArgb(0, 100, 165);
+            btnTema.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            btnTema.Font = new Font("Tahoma", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            btnTema.ForeColor = Color.White;
+            btnTema.Image = (Image)resources.GetObject("btnTema.Image");
+            btnTema.ImageTransparentColor = Color.Magenta;
+            btnTema.Margin = new Padding(15);
+            btnTema.Name = "btnTema";
+            btnTema.Padding = new Padding(5);
+            btnTema.RightToLeft = RightToLeft.No;
+            btnTema.Size = new Size(75, 38);
+            btnTema.Text = "Tema";
+            btnTema.TextDirection = ToolStripTextDirection.Horizontal;
+            btnTema.Click += btnTema_Click;
+            // 
+            // btnAluguel
+            // 
+            btnAluguel.BackColor = Color.FromArgb(0, 100, 165);
+            btnAluguel.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            btnAluguel.Font = new Font("Tahoma", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAluguel.ForeColor = Color.White;
+            btnAluguel.Image = (Image)resources.GetObject("btnAluguel.Image");
+            btnAluguel.ImageTransparentColor = Color.Magenta;
+            btnAluguel.Margin = new Padding(15);
+            btnAluguel.Name = "btnAluguel";
+            btnAluguel.Padding = new Padding(5);
+            btnAluguel.RightToLeft = RightToLeft.No;
+            btnAluguel.Size = new Size(90, 38);
+            btnAluguel.Text = "Aluguel";
+            btnAluguel.TextDirection = ToolStripTextDirection.Horizontal;
+            btnAluguel.Click += btnAluguel_Click;
+            // 
+            // toolStrip2
+            // 
+            toolStrip2.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator1, lbTipoCadastro });
+            toolStrip2.Location = new Point(0, 68);
+            toolStrip2.Name = "toolStrip2";
+            toolStrip2.Size = new Size(1013, 54);
+            toolStrip2.TabIndex = 1;
+            toolStrip2.Text = "toolStrip2";
+            // 
+            // btnAdicionar
+            // 
+            btnAdicionar.BackColor = Color.FromArgb(80, 230, 80);
+            btnAdicionar.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAdicionar.Image = Properties.Resources.add;
+            btnAdicionar.ImageScaling = ToolStripItemImageScaling.None;
+            btnAdicionar.ImageTransparentColor = Color.Magenta;
+            btnAdicionar.Margin = new Padding(10);
+            btnAdicionar.Name = "btnAdicionar";
+            btnAdicionar.Padding = new Padding(5);
+            btnAdicionar.Size = new Size(103, 34);
+            btnAdicionar.Text = "Adicionar";
+            // 
+            // btnEditar
+            // 
+            btnEditar.BackColor = Color.FromArgb(80, 130, 230);
+            btnEditar.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEditar.Image = Properties.Resources.edit;
+            btnEditar.ImageScaling = ToolStripItemImageScaling.None;
+            btnEditar.ImageTransparentColor = Color.Magenta;
+            btnEditar.Margin = new Padding(10);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Padding = new Padding(5);
+            btnEditar.Size = new Size(79, 34);
+            btnEditar.Text = "Editar";
+            // 
+            // btnExcluir
+            // 
+            btnExcluir.BackColor = Color.FromArgb(230, 80, 80);
+            btnExcluir.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            btnExcluir.Image = Properties.Resources.remove;
+            btnExcluir.ImageScaling = ToolStripItemImageScaling.None;
+            btnExcluir.ImageTransparentColor = Color.Magenta;
+            btnExcluir.Margin = new Padding(10);
+            btnExcluir.Name = "btnExcluir";
+            btnExcluir.Padding = new Padding(5);
+            btnExcluir.Size = new Size(85, 34);
+            btnExcluir.Text = "Excluir";
+            // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(6, 54);
+            // 
+            // lbTipoCadastro
+            // 
+            lbTipoCadastro.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbTipoCadastro.Name = "lbTipoCadastro";
+            lbTipoCadastro.Size = new Size(0, 51);
+            // 
+            // statusStrip1
+            // 
+            statusStrip1.Items.AddRange(new ToolStripItem[] { lbStatus });
+            statusStrip1.Location = new Point(0, 604);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(1013, 22);
+            statusStrip1.TabIndex = 2;
+            statusStrip1.Text = "statusStrip1";
+            // 
+            // lbStatus
+            // 
+            lbStatus.Name = "lbStatus";
+            lbStatus.Size = new Size(0, 17);
+            // 
+            // plPrincipal
+            // 
+            plPrincipal.Dock = DockStyle.Fill;
+            plPrincipal.Location = new Point(0, 122);
+            plPrincipal.Name = "plPrincipal";
+            plPrincipal.Size = new Size(1013, 482);
+            plPrincipal.TabIndex = 3;
+            // 
+            // TelaPrincipalForm
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1013, 626);
+            Controls.Add(plPrincipal);
+            Controls.Add(statusStrip1);
+            Controls.Add(toolStrip2);
+            Controls.Add(toolStrip1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            Name = "TelaPrincipalForm";
+            ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Party Planner";
+            toolStrip1.ResumeLayout(false);
+            toolStrip1.PerformLayout();
+            toolStrip2.ResumeLayout(false);
+            toolStrip2.PerformLayout();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private ToolStrip toolStrip1;
+        private ToolStripButton btnCliente;
+        private ToolStripButton btnFesta;
+        private ToolStripButton btnTema;
+        private ToolStripButton btnAluguel;
+        private ToolStrip toolStrip2;
+        private ToolStripButton btnAdicionar;
+        private ToolStripButton btnEditar;
+        private ToolStripButton btnExcluir;
+        private StatusStrip statusStrip1;
+        private ToolStripStatusLabel lbStatus;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripLabel lbTipoCadastro;
+        private Panel plPrincipal;
     }
 }

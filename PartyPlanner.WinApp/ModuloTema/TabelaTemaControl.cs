@@ -7,18 +7,32 @@ namespace PartyPlanner.WinApp.ModuloTema
         public TabelaTemaControl()
         {
             InitializeComponent();
+            gridTema.ConfigurarTabelaGrid("Número", "Nome", "Número de Itens", "Valor Total");
         }
 
-        public DataGridView DataGridView => throw new NotImplementedException();
+        public DataGridView DataGridView { get { return gridTema; } }
 
-        public void AtualizarLista(List<Tema> contatos)
+        public void AtualizarLista(List<Tema> temas)
         {
-            throw new NotImplementedException();
+            gridTema.Rows.Clear();
+
+            foreach (Tema item in temas)
+            {
+                DataGridViewRow row = new();
+
+                //row.CreateCells(gridTema, item.id, item.Nome, item.QtdItens, item.ValorTotal);
+
+                row.Cells[0].Tag = item;
+
+                gridTema.Rows.Add(row);
+            }
+
+            TelaPrincipalForm.AtualizarStatus($"Visualizando {temas.Count} Temas");
         }
 
-        public Tema ObterTarefaSelecionada()
+        public Tema? ObterTarefaSelecionada()
         {
-            throw new NotImplementedException();
+            return (Tema)gridTema.SelectedRows[0].Cells[0].Tag;
         }
     }
 }

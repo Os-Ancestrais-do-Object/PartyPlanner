@@ -3,7 +3,7 @@ using PartyPlanner.Infra.Dados.Arquivo.Compartilhado;
 
 namespace PartyPlanner.WinApp.Compartilhado
 {
-    public abstract class ControladorBase<TEntidade, TRepositorio, TTabela, TTela, TRepositorio2> : IControladorBase
+    public abstract class ControladorBase<TEntidade, TRepositorio, TTabela, TTela, TRepositorio2, TRepositorio3> : IControladorBase
         where TEntidade : Entidade<TEntidade>
         where TRepositorio : RepositorioBase<TEntidade> 
         where TTabela : ITabelaBase<TEntidade>, new()
@@ -11,21 +11,30 @@ namespace PartyPlanner.WinApp.Compartilhado
     {
         protected TRepositorio _repositorio;
         protected TRepositorio2 _repositorio2;
+        protected TRepositorio3 _repositorio3;
         protected TTabela _tabela;
 
         protected event Action<TTela> onCarregarArquivosSegundoRepositorio;
 
-        public ControladorBase(TRepositorio _repositorio, TTabela _listagem)
+        public ControladorBase(TRepositorio _repositorio, TTabela _tabela)
         {
             this._repositorio = _repositorio;
-            this._tabela = _listagem;
+            this._tabela = _tabela;
         }
 
-        public ControladorBase(TRepositorio _repositorio, TTabela _listagem, TRepositorio2 _repositorio2)
+        public ControladorBase(TRepositorio _repositorio, TTabela _tabela, TRepositorio2 _repositorio2)
         {
             this._repositorio = _repositorio;
-            this._tabela = _listagem;
+            this._tabela = _tabela;
             this._repositorio2 = _repositorio2;
+        }
+
+        public ControladorBase(TRepositorio _repositorio, TTabela _tabela, TRepositorio2 _repositorio2, TRepositorio3 _repositorio3)
+        {
+            this._repositorio = _repositorio;
+            this._tabela = _tabela;
+            this._repositorio2 = _repositorio2;
+            this._repositorio3 = _repositorio3;
         }
 
         public virtual string ToolTipAdicionar => $"Adicionar {typeof(TEntidade).Name}";
