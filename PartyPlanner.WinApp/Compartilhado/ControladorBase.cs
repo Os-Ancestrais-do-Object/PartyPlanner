@@ -50,7 +50,7 @@ namespace PartyPlanner.WinApp.Compartilhado
             if (onCarregarArquivosSegundoRepositorio != null)
                 onCarregarArquivosSegundoRepositorio(tela);
 
-            tela.TtxtId.Text = _repositorio.Id.ToString();
+            tela.TxtId.Text = _repositorio.Id.ToString();
 
             TelaPrincipalForm.AtualizarStatus($"Cadastrando {typeof(TEntidade).Name}");
 
