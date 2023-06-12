@@ -1,5 +1,4 @@
 ﻿using PartyPlanner.Dominio.ModuloTema.ModuloItem;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace PartyPlanner.WinApp.ModuloTema.ModuloItem
 {
