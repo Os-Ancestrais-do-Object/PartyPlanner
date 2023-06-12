@@ -1,5 +1,8 @@
 ﻿using PartyPlanner.Dados.ModuloTema;
+using PartyPlanner.Dominio.Compartilhado;
 using PartyPlanner.Dominio.ModuloTema;
+using PartyPlanner.Dominio.ModuloTema.ModuloItem;
+using PartyPlanner.WinApp.ModuloTema.ModuloItem;
 
 namespace PartyPlanner.WinApp.ModuloTema
 {
@@ -12,6 +15,26 @@ namespace PartyPlanner.WinApp.ModuloTema
         {
             _repositorioTema = _repositorio;
             _tabelaTema = _tabela;
+        }
+
+        public override void AdicionarItens()
+        {
+            TelaItemForm telaItem = new();
+
+            Tema temaSelecionado = _tabelaTema.ObterRegistroSelecionado();
+
+            telaItem.lbTema.Text = temaSelecionado.Nome;
+
+            telaItem.Entidade = temaSelecionado.Itens;
+
+            TelaPrincipalForm.AtualizarStatus($"Cadastrando Itens");
+
+            if (telaItem.ShowDialog() == DialogResult.OK)
+            {
+                _repositorioTema.AdicionarItemTema(temaSelecionado, telaItem.Entidade);
+            }
+
+            CarregarRegistros();
         }
 
         public override TabelaTemaControl ObterListagem()

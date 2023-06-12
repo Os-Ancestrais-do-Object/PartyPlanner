@@ -30,7 +30,7 @@
         {
             label1 = new Label();
             groupBox1 = new GroupBox();
-            lbTarefa = new Label();
+            lbTema = new Label();
             btnCancelar = new Button();
             btnAdd = new Button();
             txtDescricao = new TextBox();
@@ -41,6 +41,8 @@
             listItem = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
+            lbErroDescricao = new Label();
+            lbErroValor = new Label();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -55,7 +57,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(lbTarefa);
+            groupBox1.Controls.Add(lbTema);
             groupBox1.Location = new Point(101, 26);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(200, 59);
@@ -63,15 +65,15 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Tema Selecionado";
             // 
-            // lbTarefa
+            // lbTema
             // 
-            lbTarefa.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            lbTarefa.Location = new Point(0, 17);
-            lbTarefa.Name = "lbTarefa";
-            lbTarefa.Size = new Size(200, 39);
-            lbTarefa.TabIndex = 1;
-            lbTarefa.Text = "*Tema*";
-            lbTarefa.TextAlign = ContentAlignment.MiddleCenter;
+            lbTema.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            lbTema.Location = new Point(0, 17);
+            lbTema.Name = "lbTema";
+            lbTema.Size = new Size(200, 39);
+            lbTema.TabIndex = 1;
+            lbTema.Text = "*Tema*";
+            lbTema.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnCancelar
             // 
@@ -101,9 +103,11 @@
             txtDescricao.Name = "txtDescricao";
             txtDescricao.Size = new Size(113, 23);
             txtDescricao.TabIndex = 23;
+            txtDescricao.TextChanged += Validacoes_TextChanged;
             // 
             // btnAdicionarItem
             // 
+            btnAdicionarItem.Enabled = false;
             btnAdicionarItem.Location = new Point(56, 452);
             btnAdicionarItem.Name = "btnAdicionarItem";
             btnAdicionarItem.Size = new Size(75, 23);
@@ -114,12 +118,14 @@
             // 
             // btnExcluirItem
             // 
+            btnExcluirItem.Enabled = false;
             btnExcluirItem.Location = new Point(269, 452);
             btnExcluirItem.Name = "btnExcluirItem";
             btnExcluirItem.Size = new Size(75, 23);
             btnExcluirItem.TabIndex = 29;
             btnExcluirItem.Text = "Excluir";
             btnExcluirItem.UseVisualStyleBackColor = true;
+            btnExcluirItem.Click += btnExcluirItem_Click;
             // 
             // label2
             // 
@@ -136,6 +142,7 @@
             txtValor.Name = "txtValor";
             txtValor.Size = new Size(86, 23);
             txtValor.TabIndex = 30;
+            txtValor.TextChanged += Validacoes_TextChanged;
             txtValor.KeyPress += ApenasNumeros_KeyPress;
             // 
             // listItem
@@ -150,6 +157,7 @@
             listItem.TabIndex = 32;
             listItem.UseCompatibleStateImageBehavior = false;
             listItem.View = View.Details;
+            listItem.SelectedIndexChanged += listItem_SelectedIndexChanged;
             // 
             // columnHeader1
             // 
@@ -161,11 +169,37 @@
             columnHeader2.Text = "Valor";
             columnHeader2.Width = 95;
             // 
+            // lbErroDescricao
+            // 
+            lbErroDescricao.AutoSize = true;
+            lbErroDescricao.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            lbErroDescricao.ForeColor = Color.Red;
+            lbErroDescricao.Location = new Point(91, 88);
+            lbErroDescricao.Name = "lbErroDescricao";
+            lbErroDescricao.Size = new Size(112, 13);
+            lbErroDescricao.TabIndex = 33;
+            lbErroDescricao.Text = "*Campo Obrigatório";
+            lbErroDescricao.Visible = false;
+            // 
+            // lbErroValor
+            // 
+            lbErroValor.AutoSize = true;
+            lbErroValor.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            lbErroValor.ForeColor = Color.Red;
+            lbErroValor.Location = new Point(258, 88);
+            lbErroValor.Name = "lbErroValor";
+            lbErroValor.Size = new Size(112, 13);
+            lbErroValor.TabIndex = 34;
+            lbErroValor.Text = "*Campo Obrigatório";
+            lbErroValor.Visible = false;
+            // 
             // TelaItemForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(418, 562);
+            Controls.Add(lbErroValor);
+            Controls.Add(lbErroDescricao);
             Controls.Add(listItem);
             Controls.Add(label2);
             Controls.Add(txtValor);
@@ -193,16 +227,18 @@
 
         private Label label1;
         private GroupBox groupBox1;
-        internal Label lbTarefa;
+        internal Label lbTema;
         internal Button btnCancelar;
         internal Button btnAdd;
         internal TextBox txtDescricao;
-        internal Button btnAdicionarItem;
-        internal Button btnExcluirItem;
         private Label label2;
         internal TextBox txtValor;
         private ListView listItem;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
+        private Label lbErroDescricao;
+        private Label lbErroValor;
+        private Button btnAdicionarItem;
+        private Button btnExcluirItem;
     }
 }

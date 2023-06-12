@@ -68,7 +68,7 @@ namespace PartyPlanner.WinApp.Compartilhado
 
         public virtual void Editar()
         {
-            TEntidade? entidade = _tabela.ObterTarefaSelecionada();
+            TEntidade? entidade = _tabela.ObterRegistroSelecionado();
 
             TTela tela = new TTela();
 
@@ -91,7 +91,7 @@ namespace PartyPlanner.WinApp.Compartilhado
 
         public virtual void Excluir()
         {
-            TEntidade? entidade = _tabela.ObterTarefaSelecionada();
+            TEntidade? entidade = _tabela.ObterRegistroSelecionado();
 
             TelaPrincipalForm.AtualizarStatus($"Excluindo {typeof(TEntidade).Name}");
 
@@ -109,10 +109,6 @@ namespace PartyPlanner.WinApp.Compartilhado
         public virtual void Filtrar() {  }
 
         public virtual void AdicionarItens() { }
-
-        public virtual void AtualizarItensCheck() { }
-
-        public virtual void VisualizarDespesasPorCategoria() { }
 
         public virtual void CarregarRegistros()
         {

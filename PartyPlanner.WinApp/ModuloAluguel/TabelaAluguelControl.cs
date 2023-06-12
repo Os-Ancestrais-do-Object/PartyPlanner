@@ -30,7 +30,7 @@ namespace PartyPlanner.WinApp.ModuloAluguel
             TelaPrincipalForm.AtualizarStatus($"Visualizando {alugueis.Count} Aluguéis");
         }
 
-        public Aluguel? ObterTarefaSelecionada()
+        public Aluguel? ObterRegistroSelecionado()
         {
             return (Aluguel)gridAluguel.SelectedRows[0].Cells[0].Tag;
         }

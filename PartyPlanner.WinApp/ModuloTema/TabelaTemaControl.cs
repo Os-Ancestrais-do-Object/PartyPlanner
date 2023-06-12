@@ -7,10 +7,11 @@ namespace PartyPlanner.WinApp.ModuloTema
         public TabelaTemaControl()
         {
             InitializeComponent();
+
             gridTema.ConfigurarTabelaGrid("Número", "Nome", "Número de Itens", "Valor Total");
         }
 
-        public DataGridView DataGridView { get { return gridTema; } }
+        public DataGridView DataGridView => gridTema;
 
         public void AtualizarLista(List<Tema> temas)
         {
@@ -18,19 +19,23 @@ namespace PartyPlanner.WinApp.ModuloTema
 
             foreach (Tema item in temas)
             {
-                DataGridViewRow row = new();
+                //DataGridViewRow row = new();
 
-                //row.CreateCells(gridTema, item.id, item.Nome, item.QtdItens, item.ValorTotal);
+                //row.CreateCells(gridTema, item.id, item.Nome, item.QtdItens, $"R${item.ValorTotal}");
 
-                row.Cells[0].Tag = item;
+                //row.Cells[0].Tag = item;
 
-                gridTema.Rows.Add(row);
+                //gridTema.Rows.Add(row);
+
+                gridTema.Rows.Add(item.id, item.Nome, item.QtdItens, $"R${item.ValorTotal}");
+
+                gridTema.Rows[gridTema.Rows.Count - 1].Cells[0].Tag = item;
             }
 
             TelaPrincipalForm.AtualizarStatus($"Visualizando {temas.Count} Temas");
         }
 
-        public Tema? ObterTarefaSelecionada()
+        public Tema? ObterRegistroSelecionado()
         {
             return (Tema)gridTema.SelectedRows[0].Cells[0].Tag;
         }

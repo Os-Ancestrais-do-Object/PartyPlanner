@@ -8,5 +8,9 @@ namespace PartyPlanner.WinApp.ModuloCliente
         {
             InitializeComponent();
         }
+
+        public TextBox TxtId => throw new NotImplementedException();
+
+        public Cliente? Entidade { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }

@@ -10,5 +10,9 @@ namespace PartyPlanner.WinApp.ModuloFesta
         {
             InitializeComponent();
         }
+
+        public TextBox TxtId => throw new NotImplementedException();
+
+        public Festa? Entidade { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }

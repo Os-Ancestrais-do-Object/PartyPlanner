@@ -8,6 +8,6 @@ namespace PartyPlanner.WinApp.Compartilhado
 
         public void AtualizarLista(List<TEntidade> contatos);
 
-        public TEntidade ObterTarefaSelecionada();
+        public TEntidade ObterRegistroSelecionado();
     }
 }

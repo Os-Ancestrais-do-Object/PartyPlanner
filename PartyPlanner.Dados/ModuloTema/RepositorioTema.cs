@@ -1,4 +1,5 @@
-﻿using PartyPlanner.Dominio.ModuloTema;
+﻿using PartyPlanner.Dominio.Compartilhado;
+using PartyPlanner.Dominio.ModuloTema;
 using PartyPlanner.Dominio.ModuloTema.ModuloItem;
 
 namespace PartyPlanner.Dados.ModuloTema
@@ -13,9 +14,9 @@ namespace PartyPlanner.Dados.ModuloTema
 
         protected override List<Tema> ListaRegistros => dataContext.Temas;
 
-        public void AdicionarItemTema(Tema temaSelecionado, List<TemaItem> itens)
+        public void AdicionarItemTema(Tema temaSelecionado, List<ItemTema> itens)
         {
-            //temaSelecionado.itens.AddRange(itens);
+            temaSelecionado.Itens = itens;
 
             dataContext.GravarRegistrosEmArquivoBIN();
         }

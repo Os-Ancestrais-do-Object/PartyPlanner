@@ -8,5 +8,17 @@ namespace PartyPlanner.WinApp.ModuloCliente
         {
             InitializeComponent();
         }
+
+        public DataGridView DataGridView => throw new NotImplementedException();
+
+        public void AtualizarLista(List<Cliente> contatos)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Cliente ObterRegistroSelecionado()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

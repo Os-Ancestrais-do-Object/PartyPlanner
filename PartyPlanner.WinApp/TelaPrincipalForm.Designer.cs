@@ -34,17 +34,18 @@
             btnFesta = new ToolStripButton();
             btnTema = new ToolStripButton();
             btnAluguel = new ToolStripButton();
-            toolStrip2 = new ToolStrip();
+            barraFuncoes = new ToolStrip();
             btnAdicionar = new ToolStripButton();
             btnEditar = new ToolStripButton();
             btnExcluir = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
+            btnAddItem = new ToolStripButton();
             lbTipoCadastro = new ToolStripLabel();
             statusStrip1 = new StatusStrip();
             lbStatus = new ToolStripStatusLabel();
             plPrincipal = new Panel();
             toolStrip1.SuspendLayout();
-            toolStrip2.SuspendLayout();
+            barraFuncoes.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -126,14 +127,14 @@
             btnAluguel.TextDirection = ToolStripTextDirection.Horizontal;
             btnAluguel.Click += btnAluguel_Click;
             // 
-            // toolStrip2
+            // barraFuncoes
             // 
-            toolStrip2.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator1, lbTipoCadastro });
-            toolStrip2.Location = new Point(0, 68);
-            toolStrip2.Name = "toolStrip2";
-            toolStrip2.Size = new Size(1013, 54);
-            toolStrip2.TabIndex = 1;
-            toolStrip2.Text = "toolStrip2";
+            barraFuncoes.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator1, btnAddItem, lbTipoCadastro });
+            barraFuncoes.Location = new Point(0, 68);
+            barraFuncoes.Name = "barraFuncoes";
+            barraFuncoes.Size = new Size(1013, 54);
+            barraFuncoes.TabIndex = 1;
+            barraFuncoes.Visible = false;
             // 
             // btnAdicionar
             // 
@@ -147,6 +148,7 @@
             btnAdicionar.Padding = new Padding(5);
             btnAdicionar.Size = new Size(103, 34);
             btnAdicionar.Text = "Adicionar";
+            btnAdicionar.Click += btnAdd_Click;
             // 
             // btnEditar
             // 
@@ -160,6 +162,7 @@
             btnEditar.Padding = new Padding(5);
             btnEditar.Size = new Size(79, 34);
             btnEditar.Text = "Editar";
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnExcluir
             // 
@@ -173,11 +176,27 @@
             btnExcluir.Padding = new Padding(5);
             btnExcluir.Size = new Size(85, 34);
             btnExcluir.Text = "Excluir";
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
             toolStripSeparator1.Size = new Size(6, 54);
+            // 
+            // btnAddItem
+            // 
+            btnAddItem.BackColor = Color.Yellow;
+            btnAddItem.Enabled = false;
+            btnAddItem.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAddItem.Image = Properties.Resources.addItem;
+            btnAddItem.ImageScaling = ToolStripItemImageScaling.None;
+            btnAddItem.ImageTransparentColor = Color.Magenta;
+            btnAddItem.Margin = new Padding(10);
+            btnAddItem.Name = "btnAddItem";
+            btnAddItem.Padding = new Padding(5);
+            btnAddItem.Size = new Size(135, 34);
+            btnAddItem.Text = "Adicionar Item";
+            btnAddItem.Click += btnAddItem_Click;
             // 
             // lbTipoCadastro
             // 
@@ -202,9 +221,9 @@
             // plPrincipal
             // 
             plPrincipal.Dock = DockStyle.Fill;
-            plPrincipal.Location = new Point(0, 122);
+            plPrincipal.Location = new Point(0, 68);
             plPrincipal.Name = "plPrincipal";
-            plPrincipal.Size = new Size(1013, 482);
+            plPrincipal.Size = new Size(1013, 536);
             plPrincipal.TabIndex = 3;
             // 
             // TelaPrincipalForm
@@ -213,8 +232,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1013, 626);
             Controls.Add(plPrincipal);
+            Controls.Add(barraFuncoes);
             Controls.Add(statusStrip1);
-            Controls.Add(toolStrip2);
             Controls.Add(toolStrip1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
@@ -224,8 +243,8 @@
             Text = "Party Planner";
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
-            toolStrip2.ResumeLayout(false);
-            toolStrip2.PerformLayout();
+            barraFuncoes.ResumeLayout(false);
+            barraFuncoes.PerformLayout();
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
             ResumeLayout(false);
@@ -239,7 +258,7 @@
         private ToolStripButton btnFesta;
         private ToolStripButton btnTema;
         private ToolStripButton btnAluguel;
-        private ToolStrip toolStrip2;
+        private ToolStrip barraFuncoes;
         private ToolStripButton btnAdicionar;
         private ToolStripButton btnEditar;
         private ToolStripButton btnExcluir;
@@ -248,5 +267,6 @@
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripLabel lbTipoCadastro;
         private Panel plPrincipal;
+        private ToolStripButton btnAddItem;
     }
 }

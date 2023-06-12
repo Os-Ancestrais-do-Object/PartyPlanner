@@ -22,6 +22,12 @@ namespace PartyPlanner.Infra.Dados.Arquivo.Compartilhado
             Temas = new List<Tema>();
         }
 
+        public DataContext(bool carregarDados) : this()
+        {
+            if (carregarDados)
+                CarregarDados();
+        }
+
         public List<Aluguel> Alugueis { get; set; }
 
         public List<Cliente> Clientes { get; set; }
@@ -59,7 +65,7 @@ namespace PartyPlanner.Infra.Dados.Arquivo.Compartilhado
 
         public DataContext CarregarRegistrosDoArquivoBIN()
         {
-  
+
             BinaryFormatter serializador = new();
 
             byte[] registroBytes = File.ReadAllBytes(CAMINHO_ARQUIVO);

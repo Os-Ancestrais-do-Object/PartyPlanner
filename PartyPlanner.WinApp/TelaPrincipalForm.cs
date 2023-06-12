@@ -16,7 +16,7 @@ namespace PartyPlanner.WinApp
         private UserControl _tabela;
 
         private static TelaPrincipalForm _telaPrincipal;
-        private static DataContext _dataContext = new();
+        private static DataContext _dataContext = new(carregarDados: true);
 
         private RepositorioAluguel _repositorioAluguel = new(_dataContext);
         private RepositorioCliente _repositorioCliente = new(_dataContext);
@@ -34,6 +34,7 @@ namespace PartyPlanner.WinApp
 
             _telaPrincipal = this;
         }
+
 
         public static void AtualizarStatus(string status)
         {
@@ -70,38 +71,13 @@ namespace PartyPlanner.WinApp
 
         private void ConfigurarTelaPrincipal()
         {
-            ResetarBotoes();
-
             ConfigurarListagem();
 
             ConfigurarToolTipsAndButtons();
 
             AbrirListagem();
-        }
 
-        private void ConfigurarListagem()
-        {
-            _tabela = _controladorBase.ObterListagem();
-
-            _tabela.Dock = DockStyle.Fill;
-
-            ((DataGridView)(_tabela.Controls[0])).SelectionChanged += HabilitaEDesabilitaBotoes;
-        }
-
-        private void ConfigurarToolTipsAndButtons()
-        {
-            btnAdicionar.ToolTipText = _controladorBase.ToolTipAdicionar;
-            btnEditar.ToolTipText = _controladorBase.ToolTipEditar;
-            btnExcluir.ToolTipText = _controladorBase.ToolTipExcluir;
-            btnAdicionar.Enabled = true;
-        }
-
-        private void AbrirListagem()
-        {
-            lbTipoCadastro.Text = _controladorBase.ObterTipoCadastro();
-            plPrincipal.Controls.Clear();
-            plPrincipal.Controls.Add(_tabela);
-            _controladorBase.CarregarRegistros();
+            ResetarBotoes();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -122,13 +98,39 @@ namespace PartyPlanner.WinApp
             ResetarBotoes();
         }
 
-        private void HabilitaEDesabilitaBotoes(object sender, EventArgs e)
+        private void btnAddItem_Click(object sender, EventArgs e)
         {
-            ConfigurarBotoesCrud();
+            _controladorBase.AdicionarItens();
+            ResetarBotoes();
         }
 
-        private void ConfigurarBotoesCrud()
+        private void AbrirListagem()
         {
+            lbTipoCadastro.Text = _controladorBase.ObterTipoCadastro();
+            plPrincipal.Controls.Clear();
+            plPrincipal.Controls.Add(_tabela);
+            _controladorBase.CarregarRegistros();
+        }
+
+        private void ConfigurarListagem()
+        {
+            _tabela = _controladorBase.ObterListagem();
+
+            _tabela.Dock = DockStyle.Fill;
+        }
+
+        private void ConfigurarToolTipsAndButtons()
+        {
+            btnAdicionar.ToolTipText = _controladorBase.ToolTipAdicionar;
+            btnEditar.ToolTipText = _controladorBase.ToolTipEditar;
+            btnExcluir.ToolTipText = _controladorBase.ToolTipExcluir;
+            barraFuncoes.Visible = true;
+        }
+
+        private void ResetarBotoes()
+        {
+            ConfigurarBotaoItem();
+
             if (((DataGridView)_tabela.Controls[0]).SelectedRows.Count > 0)
             {
                 btnEditar.Enabled = true;
@@ -141,10 +143,12 @@ namespace PartyPlanner.WinApp
             }
         }
 
-        private void ResetarBotoes()
+        private void ConfigurarBotaoItem()
         {
-            btnEditar.Enabled = false;
-            btnExcluir.Enabled = false;
+            if (((DataGridView)_tabela.Controls[0]).SelectedRows.Count > 0 && _controladorBase is ControladorTema)
+                btnAddItem.Enabled = true;
+            else
+                btnAddItem.Enabled = false;
         }
     }
 }

@@ -8,5 +8,17 @@ namespace PartyPlanner.WinApp.ModuloFesta
         {
             InitializeComponent();
         }
+
+        public DataGridView DataGridView => throw new NotImplementedException();
+
+        public void AtualizarLista(List<Festa> contatos)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Festa ObterRegistroSelecionado()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

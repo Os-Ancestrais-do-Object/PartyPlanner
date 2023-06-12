@@ -19,20 +19,25 @@ namespace PartyPlanner.WinApp.ModuloTema
             set
             {
                 txtId.Text = value.id.ToString();
-                //txtNome.Text = value.Nome;
+                txtNome.Text = value.Nome;
             }
-            get
-            {
-                return _tema;
-            }
+            get => _tema;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            //_tema = new Tema(txtNome.Text, "", "R$0");
+            _tema = new Tema(txtNome.Text, 0);
 
             if (_tema.id == 0)
                 _tema.id = int.Parse(txtId.Text);
+        }
+
+        private void Validacoes_TextChanged(object sender, EventArgs e)
+        {
+            Tema tema = new();
+
+            lbErro.Visible = tema.ValidarCampoVazio(txtNome.Text);
+            btnAdd.Enabled = !lbErro.Visible;
         }
     }
 }

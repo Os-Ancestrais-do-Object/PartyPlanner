@@ -34,6 +34,7 @@
             txtNome = new TextBox();
             lbNome = new Label();
             lbId = new Label();
+            lbErro = new Label();
             SuspendLayout();
             // 
             // btnCancelar
@@ -74,6 +75,7 @@
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(190, 23);
             txtNome.TabIndex = 20;
+            txtNome.TextChanged += Validacoes_TextChanged;
             // 
             // lbNome
             // 
@@ -93,11 +95,24 @@
             lbId.TabIndex = 17;
             lbId.Text = "Número:";
             // 
+            // lbErro
+            // 
+            lbErro.AutoSize = true;
+            lbErro.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            lbErro.ForeColor = Color.Red;
+            lbErro.Location = new Point(164, 37);
+            lbErro.Name = "lbErro";
+            lbErro.Size = new Size(112, 13);
+            lbErro.TabIndex = 25;
+            lbErro.Text = "*Campo Obrigatório";
+            lbErro.Visible = false;
+            // 
             // TelaTemaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(355, 152);
+            Controls.Add(lbErro);
             Controls.Add(btnCancelar);
             Controls.Add(btnAdd);
             Controls.Add(txtId);
@@ -124,5 +139,6 @@
         private TextBox txtNome;
         private Label lbNome;
         private Label lbId;
+        private Label lbErro;
     }
 }
