@@ -3,15 +3,20 @@ using PartyPlanner.Dominio.ModuloTema;
 
 namespace PartyPlanner.WinApp.ModuloTema
 {
-    public class ControladorTema : ControladorBase<Tema, RepositorioTema, TabelaTemaControl, TelaTemaForm, NenhumRepositorio>
+    public class ControladorTema : ControladorBase<Tema, RepositorioTema, TabelaTemaControl, TelaTemaForm, NenhumRepositorio, NenhumRepositorio>
     {
-        public ControladorTema(RepositorioTema _repositorio, TabelaTemaControl _listagem) : base(_repositorio, _listagem)
+        private RepositorioTema _repositorioTema;
+        private TabelaTemaControl _tabelaTema;
+
+        public ControladorTema(RepositorioTema _repositorio, TabelaTemaControl _tabela) : base(_repositorio, _tabela)
         {
+            _repositorioTema = _repositorio;
+            _tabelaTema = _tabela;
         }
 
-        public override UserControl ObterListagem()
+        public override TabelaTemaControl ObterListagem()
         {
-            throw new NotImplementedException();
+            return _tabela;
         }
     }
 }

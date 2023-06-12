@@ -3,15 +3,20 @@ using PartyPlanner.Dominio.ModuloCliente;
 
 namespace PartyPlanner.WinApp.ModuloCliente
 {
-    public class ControladorCliente : ControladorBase<Cliente, RepositorioCliente, TabelaClienteControl, TelaClienteForm, NenhumRepositorio>
+    public class ControladorCliente : ControladorBase<Cliente, RepositorioCliente, TabelaClienteControl, TelaClienteForm, NenhumRepositorio, NenhumRepositorio>
     {
-        public ControladorCliente(RepositorioCliente _repositorio, TabelaClienteControl _listagem) : base(_repositorio, _listagem)
+        private RepositorioCliente _repositorioCliente;
+        private TabelaClienteControl _tabelaCliente;
+
+        public ControladorCliente(RepositorioCliente _repositorio, TabelaClienteControl _tabela) : base(_repositorio, _tabela)
         {
+            _repositorioCliente = _repositorio;
+            _tabelaCliente = _tabela;
         }
 
-        public override UserControl ObterListagem()
+        public override TabelaClienteControl ObterListagem()
         {
-            throw new NotImplementedException();
+            return _tabela;
         }
     }
 }

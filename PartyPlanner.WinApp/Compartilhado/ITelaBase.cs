@@ -4,7 +4,7 @@ namespace PartyPlanner.WinApp.Compartilhado
 {
     public interface ITelaBase<TEntidade> where TEntidade : Entidade<TEntidade>
     {
-        TextBox TtxtId { get; }
+        TextBox TxtId { get; }
 
         TEntidade? Entidade { get; set; }
 
