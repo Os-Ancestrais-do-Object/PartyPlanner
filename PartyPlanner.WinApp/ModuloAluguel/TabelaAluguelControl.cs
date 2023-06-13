@@ -1,4 +1,5 @@
 ﻿using PartyPlanner.Dominio.ModuloAluguel;
+using System.Windows.Forms;
 
 namespace PartyPlanner.WinApp.ModuloAluguel
 {
@@ -7,6 +8,7 @@ namespace PartyPlanner.WinApp.ModuloAluguel
         public TabelaAluguelControl()
         {
             InitializeComponent();
+
             gridAluguel.ConfigurarTabelaGrid("Número", "Festa", "Valor Total", "Desconto", "Valor Cobrado", "Data Quitação", "Sinal");
         }
 
@@ -18,13 +20,9 @@ namespace PartyPlanner.WinApp.ModuloAluguel
 
             foreach (Aluguel item in alugueis)
             {
-                DataGridViewRow row = new();
+                gridAluguel.Rows.Add(item.id, item.Festa, $"R${item.ValorTotal}", $"%{item.Desconto}", $"R${item.ValorCobrado}", item.DataQuitacao, $"R${item.Sinal}");
 
-                //row.CreateCells(gridAluguel, item.id, item.Festa, item.ValorTotal, item.Desconto, item.ValorCobrado, item.DataQuitacao, item.Sinal);
-
-                row.Cells[0].Tag = item;
-
-                gridAluguel.Rows.Add(row);
+                gridAluguel.Rows[gridAluguel.Rows.Count - 1].Cells[0].Tag = item;
             }
 
             TelaPrincipalForm.AtualizarStatus($"Visualizando {alugueis.Count} Aluguéis");

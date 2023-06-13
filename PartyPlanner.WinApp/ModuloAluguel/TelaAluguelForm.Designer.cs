@@ -157,6 +157,7 @@
             txtValorCobrado.Name = "txtValorCobrado";
             txtValorCobrado.Size = new Size(95, 23);
             txtValorCobrado.TabIndex = 37;
+            txtValorCobrado.TextChanged += Calcular_TextChanged;
             txtValorCobrado.KeyPress += ApenasNumeros_KeyPress;
             // 
             // label5
@@ -172,6 +173,7 @@
             // 
             txtSinal.Location = new Point(323, 120);
             txtSinal.Name = "txtSinal";
+            txtSinal.ReadOnly = true;
             txtSinal.Size = new Size(95, 23);
             txtSinal.TabIndex = 39;
             txtSinal.KeyPress += ApenasNumeros_KeyPress;
@@ -188,10 +190,12 @@
             // txtDesconto
             // 
             txtDesconto.Location = new Point(118, 149);
+            txtDesconto.MaxLength = 5;
             txtDesconto.Name = "txtDesconto";
             txtDesconto.Size = new Size(95, 23);
             txtDesconto.TabIndex = 41;
-            txtDesconto.KeyPress += ApenasNumeros_KeyPress;
+            txtDesconto.TextChanged += Calcular_TextChanged;
+            txtDesconto.KeyPress += Limit100_KeyPress;
             // 
             // TelaAluguelForm
             // 

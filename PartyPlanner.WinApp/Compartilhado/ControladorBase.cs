@@ -5,7 +5,7 @@ namespace PartyPlanner.WinApp.Compartilhado
 {
     public abstract class ControladorBase<TEntidade, TRepositorio, TTabela, TTela, TRepositorio2, TRepositorio3> : IControladorBase
         where TEntidade : Entidade<TEntidade>
-        where TRepositorio : RepositorioBase<TEntidade> 
+        where TRepositorio : RepositorioBase<TEntidade>
         where TTabela : ITabelaBase<TEntidade>, new()
         where TTela : ITelaBase<TEntidade>, new()
     {
@@ -63,7 +63,7 @@ namespace PartyPlanner.WinApp.Compartilhado
                 _repositorio.Adicionar(entidade);
 
             }
-                CarregarRegistros();
+            CarregarRegistros();
         }
 
         public virtual void Editar()
@@ -86,7 +86,7 @@ namespace PartyPlanner.WinApp.Compartilhado
                 _repositorio.Editar(tela.Entidade);
 
             }
-                CarregarRegistros();
+            CarregarRegistros();
         }
 
         public virtual void Excluir()
@@ -103,10 +103,10 @@ namespace PartyPlanner.WinApp.Compartilhado
                 _repositorio.Excluir(entidade);
 
             }
-                CarregarRegistros();
+            CarregarRegistros();
         }
 
-        public virtual void Filtrar() {  }
+        public virtual void Filtrar() { }
 
         public virtual void AdicionarItens() { }
 
@@ -117,7 +117,10 @@ namespace PartyPlanner.WinApp.Compartilhado
 
         public virtual string ObterTipoCadastro()
         {
-            return $"Cadastro de {typeof(TEntidade).Name}s";
+            if ((typeof(TEntidade).Name).EndsWith('l'))
+                return $"Cadastro de {typeof(TEntidade).Name.TrimEnd('l').Replace('e', 'é')}is";
+            else
+                return $"Cadastro de {typeof(TEntidade).Name}s";
         }
 
         public abstract UserControl ObterListagem();
