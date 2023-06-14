@@ -7,6 +7,8 @@ namespace PartyPlanner.WinApp.ModuloAluguel
     {
         private Aluguel _aluguel;
 
+        private bool isValid;
+
         public TelaAluguelForm()
         {
             InitializeComponent();
@@ -20,7 +22,7 @@ namespace PartyPlanner.WinApp.ModuloAluguel
             {
                 txtId.Text = value.id.ToString();
                 //cbFesta.Text = value.Festa.Cliente.Nome;
-                txtData.Text = value.DataQuitacao.ToString("d");
+                txtData.Value = value.DataQuitacao;
                 txtValorCobrado.Text = value.ValorCobrado.ToString();
                 txtDesconto.Text = value.Desconto.ToString();
                 txtSinal.Text = value.Sinal.ToString();
@@ -31,19 +33,48 @@ namespace PartyPlanner.WinApp.ModuloAluguel
                 return _aluguel;
             }
         }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Festa? festa = null;//cbFesta.SelectedItem as Festa;
+            ValidarCampos(sender, e);
 
-            _aluguel = new Aluguel(festa, Convert.ToDateTime(txtData.Text), Convert.ToDecimal(txtValorCobrado.Text), Convert.ToDecimal(txtDesconto.Text), Convert.ToDecimal(txtSinal.Text), Convert.ToDecimal(txtValorTotal.Text));
+            if (isValid == false)
+            {
+                this.DialogResult = DialogResult.None;
+                ImplementarMetodos();
+                return;
+            }
+
+            Festa? festa = cbFesta.SelectedItem as Festa;
+
+            _aluguel = new Aluguel(festa, Convert.ToDateTime(txtData.Text), Convert.ToDecimal(txtValorCobrado.Text), txtDesconto.Value, Convert.ToDecimal(txtSinal.Text), Convert.ToDecimal(txtValorTotal.Text));
 
             if (_aluguel.id == 0)
                 _aluguel.id = int.Parse(txtId.Text);
         }
 
+        private void ImplementarMetodos()
+        {
+            cbFesta.TextChanged += ValidarCampos;
+            txtValorCobrado.TextChanged += ValidarCampos;
+        }
+
+        private void ValidarCampos(object sender, EventArgs e)
+        {
+            Festa festa = new();
+
+            lbErroFesta.Visible = festa.ValidarCampoVazio(cbFesta.Text);
+            lbErroValorCobrado.Visible = festa.ValidarCampoVazio(txtValorCobrado.Text);
+
+            if (lbErroFesta.Visible || lbErroValorCobrado.Visible)
+                isValid = false;
+            else
+                isValid = true;
+        }
+
         private void Calcular_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtValorCobrado.Text) || string.IsNullOrEmpty(txtDesconto.Text))
+            if (string.IsNullOrEmpty(txtValorCobrado.Text))
             {
                 txtValorTotal.ResetText();
                 txtSinal.ResetText();
@@ -52,13 +83,13 @@ namespace PartyPlanner.WinApp.ModuloAluguel
             }
 
             decimal valorCobrado = Convert.ToDecimal(txtValorCobrado.Text);
-            decimal desconto = Convert.ToDecimal(txtDesconto.Text) / 100;
+            decimal desconto = Convert.ToDecimal(txtDesconto.Value) / 100;
 
             decimal valorTotal = valorCobrado - (valorCobrado * desconto);
             decimal sinal = valorTotal - valorTotal * 0.6m;
 
-            txtValorTotal.Text = $"R${valorTotal:F2}";
-            txtSinal.Text = $"R${sinal:F2}";
+            txtValorTotal.Text = $"{valorTotal:F2}";
+            txtSinal.Text = $"{sinal:F2}";
         }
 
         private void ApenasNumeros_KeyPress(object sender, KeyPressEventArgs e)
@@ -72,18 +103,9 @@ namespace PartyPlanner.WinApp.ModuloAluguel
                 e.Handled = true;
         }
 
-        private void Limit100_KeyPress(object sender, KeyPressEventArgs e)
+        private void cbFesta_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            TextBox txt = (TextBox)sender;
-
-            ApenasNumeros_KeyPress(sender, e);
-
-            if (char.IsDigit(e.KeyChar))
-            {
-                decimal desconto = Convert.ToDecimal(txt.Text + e.KeyChar);
-
-                e.Handled = desconto > 100;
-            }
+            txtValorCobrado.Text = ((Festa)cbFesta.SelectedItem).Tema.ValorTotal.ToString();
         }
     }
 }

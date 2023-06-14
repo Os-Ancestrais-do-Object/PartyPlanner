@@ -43,14 +43,17 @@
             label5 = new Label();
             txtSinal = new TextBox();
             label7 = new Label();
-            txtDesconto = new TextBox();
+            lbErroFesta = new Label();
+            lbErroValorCobrado = new Label();
+            txtDesconto = new NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)txtDesconto).BeginInit();
             SuspendLayout();
             // 
             // btnCancelar
             // 
             btnCancelar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnCancelar.DialogResult = DialogResult.Cancel;
-            btnCancelar.Location = new Point(364, 199);
+            btnCancelar.Location = new Point(364, 286);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(70, 36);
             btnCancelar.TabIndex = 35;
@@ -61,8 +64,7 @@
             // 
             btnAdd.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnAdd.DialogResult = DialogResult.OK;
-            btnAdd.Enabled = false;
-            btnAdd.Location = new Point(288, 199);
+            btnAdd.Location = new Point(288, 286);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(70, 36);
             btnAdd.TabIndex = 34;
@@ -73,7 +75,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(27, 97);
+            label3.Location = new Point(27, 123);
             label3.Name = "label3";
             label3.Size = new Size(85, 15);
             label3.TabIndex = 29;
@@ -82,7 +84,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(253, 152);
+            label2.Location = new Point(253, 204);
             label2.Name = "label2";
             label2.Size = new Size(64, 15);
             label2.TabIndex = 28;
@@ -101,7 +103,7 @@
             // 
             txtData.CustomFormat = "";
             txtData.Format = DateTimePickerFormat.Short;
-            txtData.Location = new Point(118, 91);
+            txtData.Location = new Point(118, 117);
             txtData.Name = "txtData";
             txtData.Size = new Size(127, 23);
             txtData.TabIndex = 24;
@@ -110,15 +112,16 @@
             // 
             cbFesta.DropDownStyle = ComboBoxStyle.DropDownList;
             cbFesta.FormattingEnabled = true;
-            cbFesta.Location = new Point(118, 62);
+            cbFesta.Location = new Point(118, 75);
             cbFesta.Name = "cbFesta";
             cbFesta.Size = new Size(203, 23);
             cbFesta.TabIndex = 23;
+            cbFesta.SelectionChangeCommitted += cbFesta_SelectionChangeCommitted;
             // 
             // txtValorTotal
             // 
             txtValorTotal.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            txtValorTotal.Location = new Point(323, 149);
+            txtValorTotal.Location = new Point(323, 201);
             txtValorTotal.Name = "txtValorTotal";
             txtValorTotal.ReadOnly = true;
             txtValorTotal.Size = new Size(95, 23);
@@ -136,7 +139,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(59, 65);
+            label6.Location = new Point(59, 78);
             label6.Name = "label6";
             label6.Size = new Size(53, 15);
             label6.TabIndex = 36;
@@ -145,7 +148,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(27, 123);
+            label4.Location = new Point(27, 162);
             label4.Name = "label4";
             label4.Size = new Size(85, 15);
             label4.TabIndex = 38;
@@ -153,7 +156,7 @@
             // 
             // txtValorCobrado
             // 
-            txtValorCobrado.Location = new Point(118, 120);
+            txtValorCobrado.Location = new Point(118, 159);
             txtValorCobrado.Name = "txtValorCobrado";
             txtValorCobrado.Size = new Size(95, 23);
             txtValorCobrado.TabIndex = 37;
@@ -163,7 +166,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(282, 123);
+            label5.Location = new Point(282, 162);
             label5.Name = "label5";
             label5.Size = new Size(35, 15);
             label5.TabIndex = 40;
@@ -171,7 +174,7 @@
             // 
             // txtSinal
             // 
-            txtSinal.Location = new Point(323, 120);
+            txtSinal.Location = new Point(323, 159);
             txtSinal.Name = "txtSinal";
             txtSinal.ReadOnly = true;
             txtSinal.Size = new Size(95, 23);
@@ -181,29 +184,53 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(34, 152);
+            label7.Location = new Point(34, 204);
             label7.Name = "label7";
             label7.Size = new Size(78, 15);
             label7.TabIndex = 42;
             label7.Text = "Desconto(%):";
             // 
+            // lbErroFesta
+            // 
+            lbErroFesta.AutoSize = true;
+            lbErroFesta.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            lbErroFesta.ForeColor = Color.Red;
+            lbErroFesta.Location = new Point(118, 59);
+            lbErroFesta.Name = "lbErroFesta";
+            lbErroFesta.Size = new Size(112, 13);
+            lbErroFesta.TabIndex = 43;
+            lbErroFesta.Text = "*Campo Obrigatório";
+            lbErroFesta.Visible = false;
+            // 
+            // lbErroValorCobrado
+            // 
+            lbErroValorCobrado.AutoSize = true;
+            lbErroValorCobrado.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            lbErroValorCobrado.ForeColor = Color.Red;
+            lbErroValorCobrado.Location = new Point(118, 143);
+            lbErroValorCobrado.Name = "lbErroValorCobrado";
+            lbErroValorCobrado.Size = new Size(112, 13);
+            lbErroValorCobrado.TabIndex = 44;
+            lbErroValorCobrado.Text = "*Campo Obrigatório";
+            lbErroValorCobrado.Visible = false;
+            // 
             // txtDesconto
             // 
-            txtDesconto.Location = new Point(118, 149);
-            txtDesconto.MaxLength = 5;
+            txtDesconto.Location = new Point(118, 201);
             txtDesconto.Name = "txtDesconto";
             txtDesconto.Size = new Size(95, 23);
-            txtDesconto.TabIndex = 41;
-            txtDesconto.TextChanged += Calcular_TextChanged;
-            txtDesconto.KeyPress += Limit100_KeyPress;
+            txtDesconto.TabIndex = 45;
+            txtDesconto.ValueChanged += Calcular_TextChanged;
             // 
             // TelaAluguelForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(446, 247);
-            Controls.Add(label7);
+            ClientSize = new Size(446, 334);
             Controls.Add(txtDesconto);
+            Controls.Add(lbErroValorCobrado);
+            Controls.Add(lbErroFesta);
+            Controls.Add(label7);
             Controls.Add(label5);
             Controls.Add(txtSinal);
             Controls.Add(label4);
@@ -226,6 +253,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastro de Aluguéis";
             TopMost = true;
+            ((System.ComponentModel.ISupportInitialize)txtDesconto).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -243,10 +271,12 @@
         public TextBox txtId;
         private Label label6;
         private Label label4;
-        private TextBox txtValorCobrado;
         private Label label5;
         private TextBox txtSinal;
         private Label label7;
-        private TextBox txtDesconto;
+        private NumericUpDown txtDesconto;
+        internal TextBox txtValorCobrado;
+        private Label lbErroFesta;
+        private Label lbErroValorCobrado;
     }
 }

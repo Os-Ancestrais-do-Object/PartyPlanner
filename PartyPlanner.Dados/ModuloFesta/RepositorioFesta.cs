@@ -6,8 +6,10 @@ namespace PartyPlanner.Dados.ModuloFesta
     {
         public RepositorioFesta(DataContext dataContext) : base(dataContext)
         {
+            if (dataContext.Festas.Count > 0)
+                id = dataContext.Festas.Max(x => x.id) + 1;
         }
 
-        protected override List<Festa> ListaRegistros => throw new NotImplementedException();
+        protected override List<Festa> ListaRegistros => dataContext.Festas;
     }
 }

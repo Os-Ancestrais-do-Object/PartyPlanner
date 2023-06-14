@@ -7,18 +7,29 @@ namespace PartyPlanner.WinApp.ModuloFesta
         public TabelaFestaControl()
         {
             InitializeComponent();
+
+            gridFesta.ConfigurarTabelaGrid("Número", "Endereço", "Tema", "Data", "Hora Início", "Hora Término", "Cliente");
         }
 
-        public DataGridView DataGridView => throw new NotImplementedException();
+        public DataGridView DataGridView { get { return gridFesta; } }
 
-        public void AtualizarLista(List<Festa> contatos)
+        public void AtualizarLista(List<Festa> festas)
         {
-            throw new NotImplementedException();
+            gridFesta.Rows.Clear();
+
+            foreach (Festa item in festas)
+            {
+                gridFesta.Rows.Add(item.id, item.Endereco, item.Tema.Nome, item.Data.ToString("d"), item.HoraInicio.ToString("d"), item.HoraFinal.ToString("d"), item.Cliente);
+
+                gridFesta.Rows[gridFesta.Rows.Count - 1].Cells[0].Tag = item;
+            }
+
+            TelaPrincipalForm.AtualizarStatus($"Visualizando {festas.Count} Festas");
         }
 
-        public Festa ObterRegistroSelecionado()
+        public Festa? ObterRegistroSelecionado()
         {
-            throw new NotImplementedException();
+            return (Festa)gridFesta.SelectedRows[0].Cells[0].Tag;
         }
     }
 }

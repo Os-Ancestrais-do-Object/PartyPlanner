@@ -19,7 +19,7 @@ namespace PartyPlanner.WinApp.ModuloAluguel
 
             foreach (Aluguel item in alugueis)
             {
-                gridAluguel.Rows.Add(item.id, item.Festa, $"R${item.ValorTotal}", $"%{item.Desconto}", $"R${item.ValorCobrado}", item.DataQuitacao, $"R${item.Sinal}");
+                gridAluguel.Rows.Add(item.id, item.Festa.Cliente, $"R${item.ValorTotal}", $"{item.Desconto}%", $"R${item.ValorCobrado}", item.DataQuitacao.ToString("d"), $"R${item.Sinal}");
 
                 gridAluguel.Rows[gridAluguel.Rows.Count - 1].Cells[0].Tag = item;
             }

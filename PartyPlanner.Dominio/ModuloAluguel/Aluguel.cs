@@ -7,7 +7,7 @@ namespace PartyPlanner.Dominio.ModuloAluguel
     {
         public Festa Festa { get; set; }
         public DateTime DataQuitacao { get; set; }
-        public decimal ValorCobrado { get; set; } //Festa.Tema.Valor
+        public decimal ValorCobrado { get => Festa.Tema.ValorTotal; set { } }
         public decimal Desconto { get; set; }
         public decimal Sinal { get; set; }
         public decimal ValorTotal { get; set; }
