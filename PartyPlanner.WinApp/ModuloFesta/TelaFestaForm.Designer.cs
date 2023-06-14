@@ -309,12 +309,12 @@
         private Label label1;
         private DateTimePicker txtInicio;
         private DateTimePicker txtData;
-        public ComboBox cbTema;
+        internal ComboBox cbTema;
         private TextBox txtEndereco;
         public TextBox txtId;
         private Label label6;
         private Label label7;
-        public ComboBox cbCliente;
+        internal ComboBox cbCliente;
         private Label lbErroEndereco;
         private Label lbErroTema;
         private Label lbErroData;

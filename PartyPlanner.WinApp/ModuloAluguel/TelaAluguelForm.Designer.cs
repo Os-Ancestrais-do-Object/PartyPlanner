@@ -266,7 +266,7 @@
         private Label label2;
         private Label label1;
         private DateTimePicker txtData;
-        public ComboBox cbFesta;
+        internal ComboBox cbFesta;
         private TextBox txtValorTotal;
         public TextBox txtId;
         private Label label6;
@@ -275,7 +275,7 @@
         private TextBox txtSinal;
         private Label label7;
         private NumericUpDown txtDesconto;
-        internal TextBox txtValorCobrado;
+        private TextBox txtValorCobrado;
         private Label lbErroFesta;
         private Label lbErroValorCobrado;
     }
