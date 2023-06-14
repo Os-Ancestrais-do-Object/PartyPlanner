@@ -1,6 +1,5 @@
 ﻿using PartyPlanner.Dominio.ModuloAluguel;
 using PartyPlanner.Dominio.ModuloFesta;
-using PartyPlanner.Dominio.ModuloTema;
 
 namespace PartyPlanner.WinApp.ModuloAluguel
 {

@@ -1,7 +1,5 @@
 ﻿using PartyPlanner.Dados.ModuloTema;
-using PartyPlanner.Dominio.Compartilhado;
 using PartyPlanner.Dominio.ModuloTema;
-using PartyPlanner.Dominio.ModuloTema.ModuloItem;
 using PartyPlanner.WinApp.ModuloTema.ModuloItem;
 
 namespace PartyPlanner.WinApp.ModuloTema

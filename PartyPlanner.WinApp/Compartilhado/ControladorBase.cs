@@ -117,7 +117,7 @@ namespace PartyPlanner.WinApp.Compartilhado
 
         public virtual string ObterTipoCadastro()
         {
-            if ((typeof(TEntidade).Name).EndsWith('l'))
+            if ((typeof(TEntidade).Name).EndsWith("el"))
                 return $"Cadastro de {typeof(TEntidade).Name.TrimEnd('l').Replace('e', 'é')}is";
             else
                 return $"Cadastro de {typeof(TEntidade).Name}s";

@@ -1,5 +1,4 @@
 ﻿using PartyPlanner.Dominio.ModuloAluguel;
-using System.Windows.Forms;
 
 namespace PartyPlanner.WinApp.ModuloAluguel
 {
