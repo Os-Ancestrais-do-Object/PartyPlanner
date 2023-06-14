@@ -19,14 +19,6 @@ namespace PartyPlanner.WinApp.ModuloTema
 
             foreach (Tema item in temas)
             {
-                //DataGridViewRow row = new();
-
-                //row.CreateCells(gridTema, item.id, item.Nome, item.QtdItens, $"R${item.ValorTotal}");
-
-                //row.Cells[0].Tag = item;
-
-                //gridTema.Rows.Add(row);
-
                 gridTema.Rows.Add(item.id, item.Nome, item.QtdItens, $"R${item.ValorTotal}");
 
                 gridTema.Rows[gridTema.Rows.Count - 1].Cells[0].Tag = item;
