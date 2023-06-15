@@ -8,7 +8,7 @@ namespace PartyPlanner.WinApp.ModuloAluguel
         {
             InitializeComponent();
 
-            gridAluguel.ConfigurarTabelaGrid("Número", "Festa", "Valor Total", "Desconto", "Valor Cobrado", "Data Quitação", "Sinal");
+            gridAluguel.ConfigurarTabelaGrid("Número", "Festa de", "Valor Cobrado", "Desconto", "Sinal", "Valor Total", "Data Quitação");
         }
 
         public DataGridView DataGridView { get { return gridAluguel; } }
@@ -19,7 +19,7 @@ namespace PartyPlanner.WinApp.ModuloAluguel
 
             foreach (Aluguel item in alugueis)
             {
-                gridAluguel.Rows.Add(item.id, item.Festa, $"R${item.ValorTotal}", $"%{item.Desconto}", $"R${item.ValorCobrado}", item.DataQuitacao, $"R${item.Sinal}");
+                gridAluguel.Rows.Add(item.id, item.Festa.Cliente, $"R${item.ValorCobrado}", $"{item.Desconto}%", $"R${item.Sinal}", $"R${item.ValorTotal}", item.DataQuitacao.ToString("d"));
 
                 gridAluguel.Rows[gridAluguel.Rows.Count - 1].Cells[0].Tag = item;
             }
