@@ -12,6 +12,8 @@ namespace PartyPlanner.WinApp
 {
     public partial class TelaPrincipalForm : Form
     {
+        private Dictionary<Control, ToolStripButton> coresBotoes = new();
+
         private IControladorBase _controladorBase;
         private UserControl _tabela;
 
@@ -33,8 +35,17 @@ namespace PartyPlanner.WinApp
             InitializeComponent();
 
             _telaPrincipal = this;
+
+            AdicionarBotoesDicionario();
         }
 
+        private void AdicionarBotoesDicionario()
+        {
+            coresBotoes.Add(_tabelaCliente, btnCliente);
+            coresBotoes.Add(_tabelaFesta, btnFesta);
+            coresBotoes.Add(_tabelaTema, btnTema);
+            coresBotoes.Add(_tabelaAluguel, btnAluguel);
+        }
 
         public static void AtualizarStatus(string status)
         {
@@ -165,6 +176,42 @@ namespace PartyPlanner.WinApp
                 btnAttStatus.Enabled = true;
             else
                 btnAttStatus.Enabled = false;
+        }
+
+        private void btnColor_MouseEnter(object sender, EventArgs e)
+        {
+            ToolStripButton btn = (ToolStripButton)sender;
+
+            btn.ForeColor = Color.Black;
+        }
+
+        private void btnColor_MouseLeave(object sender, EventArgs e)
+        {
+            ToolStripButton btn = (ToolStripButton)sender;
+
+            btn.ForeColor = Color.White;
+        }
+
+        private void plPrincipal_ControlAdded(object sender, ControlEventArgs e)
+        {
+            ToolStripButton btn;
+
+            coresBotoes.TryGetValue(e.Control, out btn);
+
+            btn.BackColor = Color.White;
+            btn.ForeColor = Color.Black;
+            btn.MouseLeave -= btnColor_MouseLeave;
+        }
+
+        private void plPrincipal_ControlRemoved(object sender, ControlEventArgs e)
+        {
+            ToolStripButton btn;
+
+            coresBotoes.TryGetValue(e.Control, out btn);
+
+            btn.BackColor = Color.FromArgb(0, 100, 165);
+            btn.ForeColor = Color.White;
+            btn.MouseLeave += btnColor_MouseLeave;
         }
     }
 }

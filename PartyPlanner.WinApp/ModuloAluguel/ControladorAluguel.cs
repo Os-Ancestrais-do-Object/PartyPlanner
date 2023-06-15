@@ -1,13 +1,6 @@
 ﻿using PartyPlanner.Dados.ModuloAluguel;
-using PartyPlanner.Dados.ModuloCliente;
 using PartyPlanner.Dados.ModuloFesta;
-using PartyPlanner.Dados.ModuloTema;
-using PartyPlanner.Dominio.Compartilhado;
 using PartyPlanner.Dominio.ModuloAluguel;
-using PartyPlanner.Dominio.ModuloTema;
-using PartyPlanner.WinApp.ModuloFesta;
-using PartyPlanner.WinApp.ModuloTema.ModuloItem;
-using System.Xml.Linq;
 
 namespace PartyPlanner.WinApp.ModuloAluguel
 {

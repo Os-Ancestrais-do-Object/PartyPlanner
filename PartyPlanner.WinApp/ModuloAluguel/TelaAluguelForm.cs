@@ -60,10 +60,10 @@ namespace PartyPlanner.WinApp.ModuloAluguel
 
         private void ValidarCampos(object sender, EventArgs e)
         {
-            Festa festa = new();
+            Aluguel aluguel = new();
 
-            lbErroFesta.Visible = festa.ValidarCampoVazio(cbFesta.Text);
-            lbErroValorCobrado.Visible = festa.ValidarCampoVazio(txtValorCobrado.Text);
+            lbErroFesta.Visible = aluguel.ValidarCampoVazio(cbFesta.Text);
+            lbErroValorCobrado.Visible = aluguel.ValidarCampoVazio(txtValorCobrado.Text);
 
             if (lbErroFesta.Visible || lbErroValorCobrado.Visible)
                 isValid = false;

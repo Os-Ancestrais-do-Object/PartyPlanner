@@ -21,10 +21,5 @@ namespace PartyPlanner.Dominio.ModuloTema
         {
             
         }
-
-        public bool ValidarCampoVazio(string campo)
-        {
-            return string.IsNullOrEmpty(campo);
-        }
     }
 }

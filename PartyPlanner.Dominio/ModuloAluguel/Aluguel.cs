@@ -27,10 +27,5 @@ namespace PartyPlanner.Dominio.ModuloAluguel
         {
 
         }
-
-        public bool ValidarCampoVazio(string campo)
-        {
-            return string.IsNullOrEmpty(campo);
-        }
     }
 }

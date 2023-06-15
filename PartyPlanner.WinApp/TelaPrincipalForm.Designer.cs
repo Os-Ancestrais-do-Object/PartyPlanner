@@ -56,7 +56,7 @@
             toolStrip1.Items.AddRange(new ToolStripItem[] { btnCliente, btnFesta, btnTema, btnAluguel });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(1013, 68);
+            toolStrip1.Size = new Size(1013, 58);
             toolStrip1.TabIndex = 0;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -68,14 +68,16 @@
             btnCliente.ForeColor = Color.White;
             btnCliente.Image = (Image)resources.GetObject("btnCliente.Image");
             btnCliente.ImageTransparentColor = Color.Magenta;
-            btnCliente.Margin = new Padding(15);
+            btnCliente.Margin = new Padding(15, 0, 15, 0);
             btnCliente.Name = "btnCliente";
-            btnCliente.Padding = new Padding(5);
+            btnCliente.Padding = new Padding(5, 15, 5, 15);
             btnCliente.RightToLeft = RightToLeft.No;
-            btnCliente.Size = new Size(86, 38);
+            btnCliente.Size = new Size(86, 58);
             btnCliente.Text = "Cliente";
             btnCliente.TextDirection = ToolStripTextDirection.Horizontal;
             btnCliente.Click += btnCliente_Click;
+            btnCliente.MouseEnter += btnColor_MouseEnter;
+            btnCliente.MouseLeave += btnColor_MouseLeave;
             // 
             // btnFesta
             // 
@@ -85,14 +87,16 @@
             btnFesta.ForeColor = Color.White;
             btnFesta.Image = (Image)resources.GetObject("btnFesta.Image");
             btnFesta.ImageTransparentColor = Color.Magenta;
-            btnFesta.Margin = new Padding(15);
+            btnFesta.Margin = new Padding(15, 0, 15, 0);
             btnFesta.Name = "btnFesta";
-            btnFesta.Padding = new Padding(5);
+            btnFesta.Padding = new Padding(5, 15, 5, 15);
             btnFesta.RightToLeft = RightToLeft.No;
-            btnFesta.Size = new Size(72, 38);
+            btnFesta.Size = new Size(72, 58);
             btnFesta.Text = "Festa";
             btnFesta.TextDirection = ToolStripTextDirection.Horizontal;
             btnFesta.Click += btnFesta_Click;
+            btnFesta.MouseEnter += btnColor_MouseEnter;
+            btnFesta.MouseLeave += btnColor_MouseLeave;
             // 
             // btnTema
             // 
@@ -102,14 +106,16 @@
             btnTema.ForeColor = Color.White;
             btnTema.Image = (Image)resources.GetObject("btnTema.Image");
             btnTema.ImageTransparentColor = Color.Magenta;
-            btnTema.Margin = new Padding(15);
+            btnTema.Margin = new Padding(15, 0, 15, 0);
             btnTema.Name = "btnTema";
-            btnTema.Padding = new Padding(5);
+            btnTema.Padding = new Padding(5, 15, 5, 15);
             btnTema.RightToLeft = RightToLeft.No;
-            btnTema.Size = new Size(75, 38);
+            btnTema.Size = new Size(75, 58);
             btnTema.Text = "Tema";
             btnTema.TextDirection = ToolStripTextDirection.Horizontal;
             btnTema.Click += btnTema_Click;
+            btnTema.MouseEnter += btnColor_MouseEnter;
+            btnTema.MouseLeave += btnColor_MouseLeave;
             // 
             // btnAluguel
             // 
@@ -119,19 +125,22 @@
             btnAluguel.ForeColor = Color.White;
             btnAluguel.Image = (Image)resources.GetObject("btnAluguel.Image");
             btnAluguel.ImageTransparentColor = Color.Magenta;
-            btnAluguel.Margin = new Padding(15);
+            btnAluguel.Margin = new Padding(15, 0, 15, 0);
             btnAluguel.Name = "btnAluguel";
-            btnAluguel.Padding = new Padding(5);
+            btnAluguel.Padding = new Padding(5, 15, 5, 15);
             btnAluguel.RightToLeft = RightToLeft.No;
-            btnAluguel.Size = new Size(90, 38);
+            btnAluguel.Size = new Size(90, 58);
             btnAluguel.Text = "Aluguel";
             btnAluguel.TextDirection = ToolStripTextDirection.Horizontal;
             btnAluguel.Click += btnAluguel_Click;
+            btnAluguel.MouseEnter += btnColor_MouseEnter;
+            btnAluguel.MouseLeave += btnColor_MouseLeave;
             // 
             // barraFuncoes
             // 
+            barraFuncoes.BackColor = Color.White;
             barraFuncoes.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator1, btnAddItem, btnAttStatus, lbTipoCadastro });
-            barraFuncoes.Location = new Point(0, 68);
+            barraFuncoes.Location = new Point(0, 58);
             barraFuncoes.Name = "barraFuncoes";
             barraFuncoes.Size = new Size(1013, 54);
             barraFuncoes.TabIndex = 1;
@@ -237,10 +246,12 @@
             // plPrincipal
             // 
             plPrincipal.Dock = DockStyle.Fill;
-            plPrincipal.Location = new Point(0, 122);
+            plPrincipal.Location = new Point(0, 58);
             plPrincipal.Name = "plPrincipal";
-            plPrincipal.Size = new Size(1013, 482);
+            plPrincipal.Size = new Size(1013, 546);
             plPrincipal.TabIndex = 3;
+            plPrincipal.ControlAdded += plPrincipal_ControlAdded;
+            plPrincipal.ControlRemoved += plPrincipal_ControlRemoved;
             // 
             // TelaPrincipalForm
             // 
