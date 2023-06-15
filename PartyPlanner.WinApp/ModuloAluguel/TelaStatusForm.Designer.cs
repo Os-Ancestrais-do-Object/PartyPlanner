@@ -45,9 +45,9 @@
             // 
             cbStatus.DropDownStyle = ComboBoxStyle.DropDownList;
             cbStatus.FormattingEnabled = true;
-            cbStatus.Location = new Point(102, 45);
+            cbStatus.Location = new Point(113, 51);
             cbStatus.Name = "cbStatus";
-            cbStatus.Size = new Size(103, 23);
+            cbStatus.Size = new Size(127, 23);
             cbStatus.TabIndex = 24;
             cbStatus.SelectionChangeCommitted += cbStatus_SelectionChangeCommitted;
             // 
@@ -73,7 +73,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(54, 48);
+            label1.Location = new Point(65, 54);
             label1.Name = "label1";
             label1.Size = new Size(42, 15);
             label1.TabIndex = 32;
@@ -151,15 +151,14 @@
         }
 
         #endregion
-
-        internal ComboBox cbStatus;
         private Label label3;
         private Label label1;
         private Button btnCancelar;
         private Button btnGravar;
         private Label label2;
-        internal Label lbAluguel;
         private BindingSource aluguelBindingSource;
+        private Label lbAluguel;
+        internal ComboBox cbStatus;
         internal DateTimePicker txtData;
     }
 }

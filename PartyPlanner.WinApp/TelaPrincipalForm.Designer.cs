@@ -53,7 +53,9 @@
             // toolStrip1
             // 
             toolStrip1.BackColor = Color.FromArgb(0, 100, 165);
+            toolStrip1.GripStyle = ToolStripGripStyle.Hidden;
             toolStrip1.Items.AddRange(new ToolStripItem[] { btnCliente, btnFesta, btnTema, btnAluguel });
+            toolStrip1.LayoutStyle = ToolStripLayoutStyle.Flow;
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(1013, 58);
@@ -139,12 +141,12 @@
             // barraFuncoes
             // 
             barraFuncoes.BackColor = Color.White;
+            barraFuncoes.GripStyle = ToolStripGripStyle.Hidden;
             barraFuncoes.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator1, btnAddItem, btnAttStatus, lbTipoCadastro });
             barraFuncoes.Location = new Point(0, 58);
             barraFuncoes.Name = "barraFuncoes";
             barraFuncoes.Size = new Size(1013, 54);
             barraFuncoes.TabIndex = 1;
-            barraFuncoes.Visible = false;
             // 
             // btnAdicionar
             // 
@@ -246,9 +248,9 @@
             // plPrincipal
             // 
             plPrincipal.Dock = DockStyle.Fill;
-            plPrincipal.Location = new Point(0, 58);
+            plPrincipal.Location = new Point(0, 112);
             plPrincipal.Name = "plPrincipal";
-            plPrincipal.Size = new Size(1013, 546);
+            plPrincipal.Size = new Size(1013, 492);
             plPrincipal.TabIndex = 3;
             plPrincipal.ControlAdded += plPrincipal_ControlAdded;
             plPrincipal.ControlRemoved += plPrincipal_ControlRemoved;
