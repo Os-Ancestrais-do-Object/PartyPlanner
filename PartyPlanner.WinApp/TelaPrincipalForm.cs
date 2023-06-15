@@ -104,6 +104,12 @@ namespace PartyPlanner.WinApp
             ResetarBotoes();
         }
 
+        private void btnAttStatus_Click(object sender, EventArgs e)
+        {
+            _controladorBase.AtualizarStatus();
+            ResetarBotoes();
+        }
+
         private void AbrirListagem()
         {
             lbTipoCadastro.Text = _controladorBase.ObterTipoCadastro();
@@ -131,6 +137,8 @@ namespace PartyPlanner.WinApp
         {
             ConfigurarBotaoItem();
 
+            ConfigurarBotaoAtualizarStatus();
+
             if (((DataGridView)_tabela.Controls[0]).SelectedRows.Count > 0)
             {
                 btnEditar.Enabled = true;
@@ -149,6 +157,14 @@ namespace PartyPlanner.WinApp
                 btnAddItem.Enabled = true;
             else
                 btnAddItem.Enabled = false;
+        }
+
+        private void ConfigurarBotaoAtualizarStatus()
+        {
+            if (((DataGridView)_tabela.Controls[0]).SelectedRows.Count > 0 && _controladorBase is ControladorAluguel)
+                btnAttStatus.Enabled = true;
+            else
+                btnAttStatus.Enabled = false;
         }
     }
 }

@@ -6,25 +6,26 @@ namespace PartyPlanner.Dominio.ModuloAluguel
     public class Aluguel : Entidade<Aluguel>
     {
         public Festa Festa { get; set; }
-        public DateTime DataQuitacao { get; set; }
+        public DateTime? DataQuitacao { get; set; }
         public decimal ValorCobrado { get => Festa.Tema.ValorTotal; set { } }
         public decimal Desconto { get; set; }
         public decimal Sinal { get; set; }
         public decimal ValorTotal { get; set; }
+        public StatusAluguel StatusAluguel { get; set; }
 
-        public Aluguel(Festa festa, DateTime dataQuitacao, decimal valorCobrado, decimal desconto, decimal sinal, decimal valorTotal)
+        public Aluguel(Festa festa, decimal valorCobrado, decimal desconto, decimal sinal, decimal valorTotal, StatusAluguel statusAluguel)
         {
             Festa = festa;
-            DataQuitacao = dataQuitacao;
             ValorCobrado = valorCobrado;
             Desconto = desconto;
             Sinal = sinal;
             ValorTotal = valorTotal;
+            StatusAluguel = statusAluguel;
         }
 
         public Aluguel()
         {
-            
+
         }
 
         public bool ValidarCampoVazio(string campo)

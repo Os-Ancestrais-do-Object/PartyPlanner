@@ -18,6 +18,8 @@
 
         public abstract void AdicionarItens();
 
+        public abstract void AtualizarStatus();
+
         public abstract void CarregarRegistros();
 
         public abstract string ObterTipoCadastro();

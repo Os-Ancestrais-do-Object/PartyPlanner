@@ -30,10 +30,8 @@
         {
             btnCancelar = new Button();
             btnAdd = new Button();
-            label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            txtData = new DateTimePicker();
             cbFesta = new ComboBox();
             txtValorTotal = new TextBox();
             txtId = new TextBox();
@@ -53,7 +51,7 @@
             // 
             btnCancelar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnCancelar.DialogResult = DialogResult.Cancel;
-            btnCancelar.Location = new Point(364, 286);
+            btnCancelar.Location = new Point(364, 224);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(70, 36);
             btnCancelar.TabIndex = 35;
@@ -64,7 +62,7 @@
             // 
             btnAdd.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnAdd.DialogResult = DialogResult.OK;
-            btnAdd.Location = new Point(288, 286);
+            btnAdd.Location = new Point(288, 224);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(70, 36);
             btnAdd.TabIndex = 34;
@@ -72,19 +70,10 @@
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += btnAdd_Click;
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(27, 123);
-            label3.Name = "label3";
-            label3.Size = new Size(85, 15);
-            label3.TabIndex = 29;
-            label3.Text = "Data Quitação:";
-            // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(253, 204);
+            label2.Location = new Point(236, 165);
             label2.Name = "label2";
             label2.Size = new Size(64, 15);
             label2.TabIndex = 28;
@@ -99,15 +88,6 @@
             label1.TabIndex = 27;
             label1.Text = "Número:";
             // 
-            // txtData
-            // 
-            txtData.CustomFormat = "";
-            txtData.Format = DateTimePickerFormat.Short;
-            txtData.Location = new Point(118, 117);
-            txtData.Name = "txtData";
-            txtData.Size = new Size(127, 23);
-            txtData.TabIndex = 24;
-            // 
             // cbFesta
             // 
             cbFesta.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -121,7 +101,7 @@
             // txtValorTotal
             // 
             txtValorTotal.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            txtValorTotal.Location = new Point(323, 201);
+            txtValorTotal.Location = new Point(306, 162);
             txtValorTotal.Name = "txtValorTotal";
             txtValorTotal.ReadOnly = true;
             txtValorTotal.Size = new Size(95, 23);
@@ -148,7 +128,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(27, 162);
+            label4.Location = new Point(27, 120);
             label4.Name = "label4";
             label4.Size = new Size(85, 15);
             label4.TabIndex = 38;
@@ -156,7 +136,7 @@
             // 
             // txtValorCobrado
             // 
-            txtValorCobrado.Location = new Point(118, 159);
+            txtValorCobrado.Location = new Point(118, 117);
             txtValorCobrado.Name = "txtValorCobrado";
             txtValorCobrado.Size = new Size(95, 23);
             txtValorCobrado.TabIndex = 37;
@@ -166,7 +146,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(282, 162);
+            label5.Location = new Point(265, 123);
             label5.Name = "label5";
             label5.Size = new Size(35, 15);
             label5.TabIndex = 40;
@@ -174,7 +154,7 @@
             // 
             // txtSinal
             // 
-            txtSinal.Location = new Point(323, 159);
+            txtSinal.Location = new Point(306, 120);
             txtSinal.Name = "txtSinal";
             txtSinal.ReadOnly = true;
             txtSinal.Size = new Size(95, 23);
@@ -184,7 +164,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(34, 204);
+            label7.Location = new Point(34, 162);
             label7.Name = "label7";
             label7.Size = new Size(78, 15);
             label7.TabIndex = 42;
@@ -207,7 +187,7 @@
             lbErroValorCobrado.AutoSize = true;
             lbErroValorCobrado.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             lbErroValorCobrado.ForeColor = Color.Red;
-            lbErroValorCobrado.Location = new Point(118, 143);
+            lbErroValorCobrado.Location = new Point(118, 101);
             lbErroValorCobrado.Name = "lbErroValorCobrado";
             lbErroValorCobrado.Size = new Size(112, 13);
             lbErroValorCobrado.TabIndex = 44;
@@ -216,7 +196,7 @@
             // 
             // txtDesconto
             // 
-            txtDesconto.Location = new Point(118, 201);
+            txtDesconto.Location = new Point(118, 159);
             txtDesconto.Name = "txtDesconto";
             txtDesconto.Size = new Size(95, 23);
             txtDesconto.TabIndex = 45;
@@ -226,7 +206,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(446, 334);
+            ClientSize = new Size(446, 272);
             Controls.Add(txtDesconto);
             Controls.Add(lbErroValorCobrado);
             Controls.Add(lbErroFesta);
@@ -238,10 +218,8 @@
             Controls.Add(label6);
             Controls.Add(btnCancelar);
             Controls.Add(btnAdd);
-            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(txtData);
             Controls.Add(cbFesta);
             Controls.Add(txtValorTotal);
             Controls.Add(txtId);
@@ -262,10 +240,8 @@
 
         private Button btnCancelar;
         private Button btnAdd;
-        private Label label3;
         private Label label2;
         private Label label1;
-        private DateTimePicker txtData;
         internal ComboBox cbFesta;
         private TextBox txtValorTotal;
         public TextBox txtId;

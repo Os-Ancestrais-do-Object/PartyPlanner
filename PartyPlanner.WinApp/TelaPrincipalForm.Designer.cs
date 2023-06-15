@@ -41,6 +41,7 @@
             toolStripSeparator1 = new ToolStripSeparator();
             btnAddItem = new ToolStripButton();
             lbTipoCadastro = new ToolStripLabel();
+            btnAttStatus = new ToolStripButton();
             statusStrip1 = new StatusStrip();
             lbStatus = new ToolStripStatusLabel();
             plPrincipal = new Panel();
@@ -129,12 +130,11 @@
             // 
             // barraFuncoes
             // 
-            barraFuncoes.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator1, btnAddItem, lbTipoCadastro });
+            barraFuncoes.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator1, btnAddItem, btnAttStatus, lbTipoCadastro });
             barraFuncoes.Location = new Point(0, 68);
             barraFuncoes.Name = "barraFuncoes";
             barraFuncoes.Size = new Size(1013, 54);
             barraFuncoes.TabIndex = 1;
-            barraFuncoes.Visible = false;
             // 
             // btnAdicionar
             // 
@@ -204,6 +204,21 @@
             lbTipoCadastro.Name = "lbTipoCadastro";
             lbTipoCadastro.Size = new Size(0, 51);
             // 
+            // btnAttStatus
+            // 
+            btnAttStatus.BackColor = Color.Orange;
+            btnAttStatus.Enabled = false;
+            btnAttStatus.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAttStatus.Image = Properties.Resources.statusCheck;
+            btnAttStatus.ImageScaling = ToolStripItemImageScaling.None;
+            btnAttStatus.ImageTransparentColor = Color.Magenta;
+            btnAttStatus.Margin = new Padding(10);
+            btnAttStatus.Name = "btnAttStatus";
+            btnAttStatus.Padding = new Padding(5);
+            btnAttStatus.Size = new Size(142, 34);
+            btnAttStatus.Text = "Atualizar Status";
+            btnAttStatus.Click += btnAttStatus_Click;
+            // 
             // statusStrip1
             // 
             statusStrip1.Items.AddRange(new ToolStripItem[] { lbStatus });
@@ -221,9 +236,9 @@
             // plPrincipal
             // 
             plPrincipal.Dock = DockStyle.Fill;
-            plPrincipal.Location = new Point(0, 68);
+            plPrincipal.Location = new Point(0, 122);
             plPrincipal.Name = "plPrincipal";
-            plPrincipal.Size = new Size(1013, 536);
+            plPrincipal.Size = new Size(1013, 482);
             plPrincipal.TabIndex = 3;
             // 
             // TelaPrincipalForm
@@ -268,5 +283,6 @@
         private ToolStripLabel lbTipoCadastro;
         private Panel plPrincipal;
         private ToolStripButton btnAddItem;
+        private ToolStripButton btnAttStatus;
     }
 }

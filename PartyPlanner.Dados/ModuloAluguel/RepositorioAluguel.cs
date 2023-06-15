@@ -11,5 +11,14 @@ namespace PartyPlanner.Dados.ModuloAluguel
         }
 
         protected override List<Aluguel> ListaRegistros => dataContext.Alugueis;
+
+        public void AtualizarStatusAluguel(Aluguel aluguelSelecionado, StatusAluguel statusSelecionado, DateTime? dataQuitacao)
+        {
+            aluguelSelecionado.StatusAluguel = statusSelecionado;
+
+            aluguelSelecionado.DataQuitacao = dataQuitacao.HasValue ? dataQuitacao.Value : null;
+
+            dataContext.GravarRegistrosEmArquivoBIN();
+        }
     }
 }

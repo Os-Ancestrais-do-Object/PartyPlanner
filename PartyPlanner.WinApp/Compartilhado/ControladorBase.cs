@@ -110,6 +110,8 @@ namespace PartyPlanner.WinApp.Compartilhado
 
         public virtual void AdicionarItens() { }
 
+        public virtual void AtualizarStatus() { }
+
         public virtual void CarregarRegistros()
         {
             _tabela.AtualizarLista(_repositorio.ObterListaRegistros());

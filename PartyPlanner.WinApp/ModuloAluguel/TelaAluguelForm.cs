@@ -22,7 +22,6 @@ namespace PartyPlanner.WinApp.ModuloAluguel
             {
                 txtId.Text = value.id.ToString();
                 //cbFesta.Text = value.Festa.Cliente.Nome;
-                txtData.Value = value.DataQuitacao;
                 txtValorCobrado.Text = value.ValorCobrado.ToString();
                 txtDesconto.Text = value.Desconto.ToString();
                 txtSinal.Text = value.Sinal.ToString();
@@ -47,7 +46,7 @@ namespace PartyPlanner.WinApp.ModuloAluguel
 
             Festa? festa = cbFesta.SelectedItem as Festa;
 
-            _aluguel = new Aluguel(festa, Convert.ToDateTime(txtData.Text), Convert.ToDecimal(txtValorCobrado.Text), txtDesconto.Value, Convert.ToDecimal(txtSinal.Text), Convert.ToDecimal(txtValorTotal.Text));
+            _aluguel = new Aluguel(festa, Convert.ToDecimal(txtValorCobrado.Text), txtDesconto.Value, Convert.ToDecimal(txtSinal.Text), Convert.ToDecimal(txtValorTotal.Text), StatusAluguel.EmAberto);
 
             if (_aluguel.id == 0)
                 _aluguel.id = int.Parse(txtId.Text);
