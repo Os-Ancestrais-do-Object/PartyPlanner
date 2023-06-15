@@ -14,7 +14,7 @@ namespace PartyPlanner.WinApp.Compartilhado
         protected TRepositorio3 _repositorio3;
         protected TTabela _tabela;
 
-        protected event Action<TTela> onCarregarArquivosSegundoRepositorio;
+        protected event Action<TTela> onCarregarArquivosEComandos;
 
         public ControladorBase(TRepositorio _repositorio, TTabela _tabela)
         {
@@ -47,8 +47,8 @@ namespace PartyPlanner.WinApp.Compartilhado
         {
             TTela tela = new TTela();
 
-            if (onCarregarArquivosSegundoRepositorio != null)
-                onCarregarArquivosSegundoRepositorio(tela);
+            if (onCarregarArquivosEComandos != null)
+                onCarregarArquivosEComandos(tela);
 
             tela.TxtId.Text = _repositorio.Id.ToString();
 
@@ -72,8 +72,8 @@ namespace PartyPlanner.WinApp.Compartilhado
 
             TTela tela = new TTela();
 
-            if (onCarregarArquivosSegundoRepositorio != null)
-                onCarregarArquivosSegundoRepositorio(tela);
+            if (onCarregarArquivosEComandos != null)
+                onCarregarArquivosEComandos(tela);
 
             tela.Entidade = entidade;
 

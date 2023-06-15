@@ -34,14 +34,14 @@
             txtNome = new TextBox();
             lbNome = new Label();
             lbId = new Label();
-            lbErro = new Label();
+            lbErroNome = new Label();
             SuspendLayout();
             // 
             // btnCancelar
             // 
             btnCancelar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnCancelar.DialogResult = DialogResult.Cancel;
-            btnCancelar.Location = new Point(273, 104);
+            btnCancelar.Location = new Point(273, 109);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(70, 36);
             btnCancelar.TabIndex = 24;
@@ -52,8 +52,7 @@
             // 
             btnAdd.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnAdd.DialogResult = DialogResult.OK;
-            btnAdd.Enabled = false;
-            btnAdd.Location = new Point(197, 104);
+            btnAdd.Location = new Point(197, 109);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(70, 36);
             btnAdd.TabIndex = 23;
@@ -71,16 +70,15 @@
             // 
             // txtNome
             // 
-            txtNome.Location = new Point(86, 53);
+            txtNome.Location = new Point(86, 66);
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(190, 23);
             txtNome.TabIndex = 20;
-            txtNome.TextChanged += Validacoes_TextChanged;
             // 
             // lbNome
             // 
             lbNome.AutoSize = true;
-            lbNome.Location = new Point(40, 56);
+            lbNome.Location = new Point(40, 69);
             lbNome.Name = "lbNome";
             lbNome.Size = new Size(43, 15);
             lbNome.TabIndex = 18;
@@ -95,24 +93,24 @@
             lbId.TabIndex = 17;
             lbId.Text = "Número:";
             // 
-            // lbErro
+            // lbErroNome
             // 
-            lbErro.AutoSize = true;
-            lbErro.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
-            lbErro.ForeColor = Color.Red;
-            lbErro.Location = new Point(164, 37);
-            lbErro.Name = "lbErro";
-            lbErro.Size = new Size(112, 13);
-            lbErro.TabIndex = 25;
-            lbErro.Text = "*Campo Obrigatório";
-            lbErro.Visible = false;
+            lbErroNome.AutoSize = true;
+            lbErroNome.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            lbErroNome.ForeColor = Color.Red;
+            lbErroNome.Location = new Point(86, 50);
+            lbErroNome.Name = "lbErroNome";
+            lbErroNome.Size = new Size(112, 13);
+            lbErroNome.TabIndex = 25;
+            lbErroNome.Text = "*Campo Obrigatório";
+            lbErroNome.Visible = false;
             // 
             // TelaTemaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(355, 152);
-            Controls.Add(lbErro);
+            ClientSize = new Size(355, 157);
+            Controls.Add(lbErroNome);
             Controls.Add(btnCancelar);
             Controls.Add(btnAdd);
             Controls.Add(txtId);
@@ -139,6 +137,6 @@
         private TextBox txtNome;
         private Label lbNome;
         private Label lbId;
-        private Label lbErro;
+        private Label lbErroNome;
     }
 }
