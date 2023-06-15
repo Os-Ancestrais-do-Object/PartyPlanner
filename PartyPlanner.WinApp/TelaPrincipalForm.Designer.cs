@@ -40,8 +40,8 @@
             btnExcluir = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
             btnAddItem = new ToolStripButton();
-            lbTipoCadastro = new ToolStripLabel();
             btnAttStatus = new ToolStripButton();
+            lbTipoCadastro = new ToolStripLabel();
             statusStrip1 = new StatusStrip();
             lbStatus = new ToolStripStatusLabel();
             plPrincipal = new Panel();
@@ -135,6 +135,7 @@
             barraFuncoes.Name = "barraFuncoes";
             barraFuncoes.Size = new Size(1013, 54);
             barraFuncoes.TabIndex = 1;
+            barraFuncoes.Visible = false;
             // 
             // btnAdicionar
             // 
@@ -198,12 +199,6 @@
             btnAddItem.Text = "Adicionar Item";
             btnAddItem.Click += btnAddItem_Click;
             // 
-            // lbTipoCadastro
-            // 
-            lbTipoCadastro.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lbTipoCadastro.Name = "lbTipoCadastro";
-            lbTipoCadastro.Size = new Size(0, 51);
-            // 
             // btnAttStatus
             // 
             btnAttStatus.BackColor = Color.Orange;
@@ -218,6 +213,12 @@
             btnAttStatus.Size = new Size(142, 34);
             btnAttStatus.Text = "Atualizar Status";
             btnAttStatus.Click += btnAttStatus_Click;
+            // 
+            // lbTipoCadastro
+            // 
+            lbTipoCadastro.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbTipoCadastro.Name = "lbTipoCadastro";
+            lbTipoCadastro.Size = new Size(0, 51);
             // 
             // statusStrip1
             // 
@@ -250,8 +251,6 @@
             Controls.Add(barraFuncoes);
             Controls.Add(statusStrip1);
             Controls.Add(toolStrip1);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
-            MaximizeBox = false;
             Name = "TelaPrincipalForm";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
