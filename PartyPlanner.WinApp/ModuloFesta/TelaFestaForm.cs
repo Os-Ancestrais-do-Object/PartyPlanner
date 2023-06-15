@@ -28,6 +28,7 @@ namespace PartyPlanner.WinApp.ModuloFesta
                 txtInicio.Value = value.HoraInicio;
                 txtFinal.Value = value.HoraFinal;
                 //cbCliente.Text = value.Cliente.Nome;
+                _festa = value;
             }
             get
             {
@@ -49,6 +50,15 @@ namespace PartyPlanner.WinApp.ModuloFesta
             Tema? tema = cbTema.SelectedItem as Tema;
             Cliente? cliente = cbCliente.SelectedItem as Cliente;
 
+            if (_festa == null)
+                tema.Reservas.Add(txtData.Value);
+            else
+            {
+                tema.Reservas.Remove(_festa.Data);
+                _festa.Tema.Reservas.Remove(_festa.Data);
+                tema.Reservas.Add(txtData.Value);
+            }
+
             _festa = new Festa(txtEndereco.Text, tema, txtData.Value, txtInicio.Value, txtFinal.Value, cliente);
 
             if (_festa.id == 0)
@@ -69,8 +79,26 @@ namespace PartyPlanner.WinApp.ModuloFesta
         {
             Festa festa = new();
 
+            Tema temaSelecionado = (Tema)cbTema.SelectedItem;
+
+            if (_festa != null && _festa.Tema.Reservas.Contains(txtData.Value) && _festa.Tema == temaSelecionado)
+            {
+                lbErroTema.Visible = false;
+            }
+            else if (ValidarTemaReservado(temaSelecionado))
+            {
+                lbErroTema.Visible = true;
+                lbErroTema.Text = "Tema já reservado nessa Data";
+            }
+            else if (festa.ValidarCampoVazio(cbTema.Text))
+            {
+                lbErroTema.Visible = true;
+                lbErroTema.Text = "Campo obrigatório";
+            }
+            else
+                lbErroTema.Visible = false;
+
             lbErroEndereco.Visible = festa.ValidarCampoVazio(txtEndereco.Text);
-            lbErroTema.Visible = festa.ValidarCampoVazio(cbTema.Text);
             //lbErroCliente.Visible = festa.ValidarCampoVazio(cbCliente.Text);
             lbErroData.Visible = ValidarData(txtData.Value);
             lbErroHora.Visible = ValidarHora(txtInicio.Value, txtFinal.Value);
@@ -81,9 +109,14 @@ namespace PartyPlanner.WinApp.ModuloFesta
                 isValid = true;
         }
 
+        private bool ValidarTemaReservado(Tema temaSelecionado)
+        {
+            return temaSelecionado.Reservas.Any(data => data.ToString("d") == txtData.Value.ToString("d"));
+        }
+
         private bool ValidarData(DateTime data)
         {
-            return data <= DateTime.Now;
+            return data < DateTime.Now;
         }
 
         private bool ValidarHora(DateTime horaInicial, DateTime horaFinal)

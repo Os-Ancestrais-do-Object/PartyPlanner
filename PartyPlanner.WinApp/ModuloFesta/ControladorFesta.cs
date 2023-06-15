@@ -2,6 +2,7 @@
 using PartyPlanner.Dados.ModuloFesta;
 using PartyPlanner.Dados.ModuloTema;
 using PartyPlanner.Dominio.ModuloFesta;
+using PartyPlanner.Dominio.ModuloTema;
 
 namespace PartyPlanner.WinApp.ModuloFesta
 {
@@ -21,6 +22,7 @@ namespace PartyPlanner.WinApp.ModuloFesta
             _repositorioTema = _repositorio3;
 
             onCarregarArquivosEComandos += CarregarComboBox;
+            onAtualizarReservasTema += AtualizarRevervasTema;
         }
 
         public void CarregarComboBox(TelaFestaForm telaFesta)
@@ -32,6 +34,11 @@ namespace PartyPlanner.WinApp.ModuloFesta
             telaFesta.cbCliente.DisplayMember = "Nome";
             telaFesta.cbCliente.ValueMember = "Nome";
             telaFesta.cbCliente.DataSource = _repositorioCliente.ObterListaRegistros();
+        }
+
+        public void AtualizarRevervasTema(Festa festa)
+        {
+            festa.Tema.Reservas.Remove(festa.Data);
         }
 
         public override TabelaFestaControl ObterListagem()

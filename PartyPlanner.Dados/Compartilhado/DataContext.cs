@@ -37,7 +37,7 @@ namespace PartyPlanner.Infra.Dados.Arquivo.Compartilhado
         public List<Tema> Temas { get; set; }
 
 
-        public const string CAMINHO_ARQUIVO = "e-agenda.bin";
+        public const string CAMINHO_ARQUIVO = "party-planner.bin";
 
         public void CarregarDados()
         {

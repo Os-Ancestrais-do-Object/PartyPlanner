@@ -10,6 +10,7 @@ namespace PartyPlanner.Dominio.ModuloTema
         public decimal QtdItens { get => Itens.Count; set { } }
         public decimal ValorTotal { get => Itens.Sum(item => item.Valor); set { } }
         public List<ItemTema> Itens { get; set; } = new();
+        public List<DateTime> Reservas { get; set; } = new();
 
         public Tema(string nome, decimal valorTotal)
         {
