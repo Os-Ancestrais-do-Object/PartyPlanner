@@ -104,7 +104,9 @@ namespace PartyPlanner.WinApp.ModuloAluguel
 
         private void cbFesta_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            txtValorCobrado.Text = ((Festa)cbFesta.SelectedItem).Tema.ValorTotal.ToString();
+            Festa festaSelecionada = (Festa)cbFesta.SelectedItem;
+            decimal valorTotal = Math.Round(festaSelecionada.Tema.ValorTotal * (decimal)(festaSelecionada.HoraFinal - festaSelecionada.HoraInicio).TotalHours);
+            txtValorCobrado.Text = valorTotal.ToString();
         }
     }
 }
