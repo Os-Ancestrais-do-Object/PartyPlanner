@@ -13,6 +13,7 @@ namespace PartyPlanner.Dominio.ModuloFesta
         public DateTime HoraInicio { get; set; }
         public DateTime HoraFinal { get; set; }
         public Cliente Cliente { get; set; }
+        public bool AluguelAtivo { get; set; }
 
         public Festa(string endereco, Tema tema, DateTime data, DateTime horaInicio, DateTime horaFinal, Cliente cliente)
         {

@@ -11,5 +11,10 @@ namespace PartyPlanner.Dados.ModuloFesta
         }
 
         protected override List<Festa> ListaRegistros => dataContext.Festas;
+
+        public List<Festa> ObterFestasSemAlguel()
+        {
+            return ListaRegistros.FindAll(x => x.AluguelAtivo == false);
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace PartyPlanner.WinApp.Compartilhado
 
         protected event Action<TTela> onCarregarArquivosEComandos;
 
-        protected event Action<TEntidade> onAtualizarReservasTema;
+        protected event Action<TEntidade> onAtualizarItensReferentes;
 
         public ControladorBase(TRepositorio _repositorio, TTabela _tabela)
         {
@@ -104,8 +104,8 @@ namespace PartyPlanner.WinApp.Compartilhado
             {
                 _repositorio.Excluir(entidade);
 
-                if (onAtualizarReservasTema != null)
-                    onAtualizarReservasTema(entidade);
+                if (onAtualizarItensReferentes != null)
+                    onAtualizarItensReferentes(entidade);
             }
             CarregarRegistros();
         }

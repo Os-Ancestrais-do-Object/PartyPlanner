@@ -18,13 +18,20 @@ namespace PartyPlanner.WinApp.ModuloAluguel
             _repositorioFesta = _repositorio2;
 
             onCarregarArquivosEComandos += CarregarComboBox;
+            onAtualizarItensReferentes += AtualizarAluguelAtivo;
+        }
+
+        private void AtualizarAluguelAtivo(Aluguel aluguel)
+        {
+            aluguel.Festa.AluguelAtivo = false;
         }
 
         public void CarregarComboBox(TelaAluguelForm telaAluguel)
         {
             telaAluguel.cbFesta.DisplayMember = "Tema.Nome";
             telaAluguel.cbFesta.ValueMember = "Tema.Nome";
-            telaAluguel.cbFesta.DataSource = _repositorioFesta.ObterListaRegistros();
+            telaAluguel.cbFesta.DataSource = _repositorioFesta.ObterFestasSemAlguel();
+            telaAluguel.cbFesta.SelectedIndex = -1;
         }
 
         public override void AtualizarStatus()

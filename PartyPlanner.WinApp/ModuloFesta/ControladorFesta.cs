@@ -22,7 +22,7 @@ namespace PartyPlanner.WinApp.ModuloFesta
             _repositorioTema = _repositorio3;
 
             onCarregarArquivosEComandos += CarregarComboBox;
-            onAtualizarReservasTema += AtualizarRevervasTema;
+            onAtualizarItensReferentes += AtualizarReservasTema;
         }
 
         public void CarregarComboBox(TelaFestaForm telaFesta)
@@ -36,7 +36,7 @@ namespace PartyPlanner.WinApp.ModuloFesta
             telaFesta.cbCliente.DataSource = _repositorioCliente.ObterListaRegistros();
         }
 
-        public void AtualizarRevervasTema(Festa festa)
+        public void AtualizarReservasTema(Festa festa)
         {
             festa.Tema.Reservas.Remove(festa.Data);
         }
