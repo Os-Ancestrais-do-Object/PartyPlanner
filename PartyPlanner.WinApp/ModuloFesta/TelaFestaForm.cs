@@ -50,6 +50,16 @@ namespace PartyPlanner.WinApp.ModuloFesta
             Tema? tema = cbTema.SelectedItem as Tema;
             Cliente? cliente = cbCliente.SelectedItem as Cliente;
 
+            AtualizarDataTema(tema);
+
+            _festa = new Festa(txtEndereco.Text, tema, txtData.Value, txtInicio.Value, txtFinal.Value, cliente);
+
+            if (_festa.id == 0)
+                _festa.id = int.Parse(txtId.Text);
+        }
+
+        private void AtualizarDataTema(Tema? tema)
+        {
             if (_festa == null)
                 tema.Reservas.Add(txtData.Value);
             else
@@ -58,11 +68,6 @@ namespace PartyPlanner.WinApp.ModuloFesta
                 _festa.Tema.Reservas.Remove(_festa.Data);
                 tema.Reservas.Add(txtData.Value);
             }
-
-            _festa = new Festa(txtEndereco.Text, tema, txtData.Value, txtInicio.Value, txtFinal.Value, cliente);
-
-            if (_festa.id == 0)
-                _festa.id = int.Parse(txtId.Text);
         }
 
         private void ImplementarMetodos()
