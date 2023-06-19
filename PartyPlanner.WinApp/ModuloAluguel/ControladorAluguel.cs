@@ -28,9 +28,9 @@ namespace PartyPlanner.WinApp.ModuloAluguel
 
         public void CarregarComboBox(TelaAluguelForm telaAluguel)
         {
-            telaAluguel.cbFesta.DisplayMember = "Tema.Nome";
-            telaAluguel.cbFesta.ValueMember = "Tema.Nome";
-            telaAluguel.cbFesta.DataSource = _repositorioFesta.ObterFestasSemAlguel();
+            telaAluguel.cbFesta.DisplayMember = "NomeCliente";
+            telaAluguel.cbFesta.ValueMember = "NomeCliente";
+            telaAluguel.cbFesta.DataSource = _repositorioFesta.ObterFestasSemAluguel();
             telaAluguel.cbFesta.SelectedIndex = -1;
         }
 

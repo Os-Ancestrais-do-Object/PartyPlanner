@@ -27,7 +27,7 @@ namespace PartyPlanner.WinApp.ModuloFesta
                 txtData.Value = value.Data;
                 txtInicio.Value = value.HoraInicio;
                 txtFinal.Value = value.HoraFinal;
-                //cbCliente.Text = value.Cliente.Nome;
+                cbCliente.Text = value.Cliente.Nome;
                 _festa = value;
             }
             get
@@ -104,7 +104,7 @@ namespace PartyPlanner.WinApp.ModuloFesta
                 lbErroTema.Visible = false;
 
             lbErroEndereco.Visible = festa.ValidarCampoVazio(txtEndereco.Text);
-            //lbErroCliente.Visible = festa.ValidarCampoVazio(cbCliente.Text);
+            lbErroCliente.Visible = festa.ValidarCampoVazio(cbCliente.Text);
             lbErroData.Visible = ValidarData(txtData.Value);
             lbErroHora.Visible = ValidarHora(txtInicio.Value, txtFinal.Value);
 

@@ -19,7 +19,7 @@ namespace PartyPlanner.WinApp.ModuloFesta
 
             foreach (Festa item in festas)
             {
-                gridFesta.Rows.Add(item.id, item.Endereco, item.Tema.Nome, item.Data.ToString("d"), item.HoraInicio.ToString("HH:mm"), item.HoraFinal.ToString("HH:mm"), item.Cliente);
+                gridFesta.Rows.Add(item.id, item.Endereco, item.Tema.Nome, item.Data.ToString("d"), item.HoraInicio.ToString("HH:mm"), item.HoraFinal.ToString("HH:mm"), item.Cliente.Nome);
 
                 gridFesta.Rows[gridFesta.Rows.Count - 1].Cells[0].Tag = item;
             }

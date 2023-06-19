@@ -6,7 +6,7 @@ namespace PartyPlanner.Dominio.ModuloFesta
     [Serializable]
     public class Festa : Entidade<Festa>
     {
-        //public string NomeCliente => Cliente.Nome;
+        public string NomeCliente => Cliente.Nome;
         public string Endereco { get; set; }
         public Tema Tema { get; set; }
         public DateTime Data { get; set; }
