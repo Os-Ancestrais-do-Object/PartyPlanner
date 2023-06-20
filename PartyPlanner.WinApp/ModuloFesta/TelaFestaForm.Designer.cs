@@ -230,9 +230,9 @@
             lbErroData.ForeColor = Color.Red;
             lbErroData.Location = new Point(97, 145);
             lbErroData.Name = "lbErroData";
-            lbErroData.Size = new Size(247, 13);
+            lbErroData.Size = new Size(207, 13);
             lbErroData.TabIndex = 41;
-            lbErroData.Text = "*Data não pode ser menor do que a data atual";
+            lbErroData.Text = "*Data não pode ser menor à data atual";
             lbErroData.Visible = false;
             // 
             // lbErroHora
@@ -242,9 +242,9 @@
             lbErroHora.ForeColor = Color.Red;
             lbErroHora.Location = new Point(97, 187);
             lbErroHora.Name = "lbErroHora";
-            lbErroHora.Size = new Size(280, 13);
+            lbErroHora.Size = new Size(295, 13);
             lbErroHora.TabIndex = 42;
-            lbErroHora.Text = "*Hora Início não pode ser maior do que data término";
+            lbErroHora.Text = "*Hora Início não pode ser maior ou igual à data término";
             lbErroHora.Visible = false;
             // 
             // lbErroCliente

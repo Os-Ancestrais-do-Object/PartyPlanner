@@ -90,15 +90,15 @@ namespace PartyPlanner.WinApp.ModuloFesta
             {
                 lbErroTema.Visible = false;
             }
-            else if (ValidarTemaReservado(temaSelecionado))
-            {
-                lbErroTema.Visible = true;
-                lbErroTema.Text = "Tema já reservado nessa Data";
-            }
             else if (festa.ValidarCampoVazio(cbTema.Text))
             {
                 lbErroTema.Visible = true;
                 lbErroTema.Text = "Campo obrigatório";
+            }
+            else if (ValidarTemaReservado(temaSelecionado))
+            {
+                lbErroTema.Visible = true;
+                lbErroTema.Text = "Tema já reservado nessa Data";
             }
             else
                 lbErroTema.Visible = false;
@@ -121,7 +121,7 @@ namespace PartyPlanner.WinApp.ModuloFesta
 
         private bool ValidarData(DateTime data)
         {
-            return data < DateTime.Now;
+            return data.Date < DateTime.Now.Date;
         }
 
         private bool ValidarHora(DateTime horaInicial, DateTime horaFinal)
