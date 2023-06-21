@@ -11,9 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Dominio", "2 - Dominio"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Dados", "3 - Dados", "{ACFDAFE1-C9BE-446D-954E-9939FF2CDA35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartyPlanner.Dominio", "PartyPlanner.Dominio\PartyPlanner.Dominio.csproj", "{2740AD54-17CA-40DD-B004-4A6926AD19C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PartyPlanner.Dominio", "PartyPlanner.Dominio\PartyPlanner.Dominio.csproj", "{2740AD54-17CA-40DD-B004-4A6926AD19C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartyPlanner.Dados", "PartyPlanner.Dados\PartyPlanner.Dados.csproj", "{7763DC72-F840-4D1E-B675-A85C69147778}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PartyPlanner.Dados", "PartyPlanner.Dados\PartyPlanner.Dados.csproj", "{7763DC72-F840-4D1E-B675-A85C69147778}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartyPlanner.ConsoleApp", "PartyPlanner.ConsoleApp\PartyPlanner.ConsoleApp.csproj", "{0189868D-546D-4C1D-9281-00EA8E847249}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{7763DC72-F840-4D1E-B675-A85C69147778}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7763DC72-F840-4D1E-B675-A85C69147778}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7763DC72-F840-4D1E-B675-A85C69147778}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0189868D-546D-4C1D-9281-00EA8E847249}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0189868D-546D-4C1D-9281-00EA8E847249}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0189868D-546D-4C1D-9281-00EA8E847249}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0189868D-546D-4C1D-9281-00EA8E847249}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +47,7 @@ Global
 		{D507BBBD-035A-4CF3-8BC4-231671193C96} = {A180E902-C566-4814-8141-8140471B5CD8}
 		{2740AD54-17CA-40DD-B004-4A6926AD19C0} = {7FFD697A-467C-40C8-940F-7FEC21EF5B50}
 		{7763DC72-F840-4D1E-B675-A85C69147778} = {ACFDAFE1-C9BE-446D-954E-9939FF2CDA35}
+		{0189868D-546D-4C1D-9281-00EA8E847249} = {A180E902-C566-4814-8141-8140471B5CD8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {082C6838-A41D-4074-93F5-BDE599E3BCD6}
