@@ -3,7 +3,7 @@
     [Serializable]
     public abstract class Entidade<TEntidade>
     {
-        public int id;
+        public int Id { get; set; }
 
         public bool ValidarCampoVazio(string campo)
         {

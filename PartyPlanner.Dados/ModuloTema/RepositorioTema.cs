@@ -1,24 +1,30 @@
-﻿using PartyPlanner.Dominio.Compartilhado;
+﻿using PartyPlanner.Dados.Compartilhado;
+using PartyPlanner.Dominio.Compartilhado;
 using PartyPlanner.Dominio.ModuloTema;
 using PartyPlanner.Dominio.ModuloTema.ModuloItem;
 
 namespace PartyPlanner.Dados.ModuloTema
 {
-    public class RepositorioTema : RepositorioBase<Tema>
+    public class RepositorioTema : RepositorioBaseSql<Tema>
     {
-        public RepositorioTema(DataContext dataContext) : base(dataContext)
-        {
-            if (dataContext.Temas.Count > 0)
-                id = dataContext.Temas.Max(x => x.id) + 1;
-        }
+        protected override string AddCommand => throw new NotImplementedException();
 
-        protected override List<Tema> ListaRegistros => dataContext.Temas;
+        protected override string EditCommand => throw new NotImplementedException();
+
+        protected override string DeleteCommand => throw new NotImplementedException();
+
+        protected override string SelectCommand => throw new NotImplementedException();
+
+        protected override string SelectAllCommand => throw new NotImplementedException();
 
         public void AdicionarItemTema(Tema temaSelecionado, List<ItemTema> itens)
         {
             temaSelecionado.Itens = itens;
+        }
 
-            dataContext.GravarRegistrosEmArquivoBIN();
+        protected override void ConfigurarParametros(Tema registro)
+        {
+            throw new NotImplementedException();
         }
     }
 }

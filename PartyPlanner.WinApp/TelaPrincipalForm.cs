@@ -20,10 +20,10 @@ namespace PartyPlanner.WinApp
         private static TelaPrincipalForm _telaPrincipal;
         private static DataContext _dataContext = new(carregarDados: true);
 
-        private RepositorioAluguel _repositorioAluguel = new(_dataContext);
-        private RepositorioCliente _repositorioCliente = new(_dataContext);
-        private RepositorioFesta _repositorioFesta = new(_dataContext);
-        private RepositorioTema _repositorioTema = new(_dataContext);
+        private RepositorioAluguel _repositorioAluguel = new();
+        private RepositorioCliente _repositorioCliente = new();
+        private RepositorioFesta _repositorioFesta = new();
+        private RepositorioTema _repositorioTema = new();
 
         private TabelaAluguelControl _tabelaAluguel = new();
         private TabelaClienteControl _tabelaCliente = new();

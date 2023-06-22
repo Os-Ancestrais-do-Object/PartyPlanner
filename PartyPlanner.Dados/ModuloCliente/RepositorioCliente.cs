@@ -1,15 +1,52 @@
-﻿using PartyPlanner.Dominio.ModuloCliente;
+﻿using PartyPlanner.Dados.Compartilhado;
+using PartyPlanner.Dominio.ModuloCliente;
 
 namespace PartyPlanner.Dados.ModuloCliente
 {
-    public class RepositorioCliente : RepositorioBase<Cliente>
+    public class RepositorioCliente : RepositorioBaseSql<Cliente>
     {
-        public RepositorioCliente(DataContext dataContext) : base(dataContext)
-        {
-            if (dataContext.Clientes.Count > 0)
-                id = dataContext.Clientes.Max(x => x.id) + 1;
-        }
+        protected override string AddCommand => @"INSERT INTO [TBCliente]
+	                                            (
+		                                            [NOME],
+		                                            [TELEFONE]
+	                                            )
+	                                            VALUES
+	                                            (
+		                                            @NOME,
+		                                            @TELEFONE
+	                                            )
+                                                Select Scope_Identity();";
 
-        protected override List<Cliente> ListaRegistros => dataContext.Clientes;
+        protected override string EditCommand => @"UPDATE [TBCliente]
+													SET
+														[NOME] = @NOME,
+														[TELEFONE] = @TELEFONE
+													WHERE
+														[ID] = @ID";
+
+        protected override string DeleteCommand => @"DELETE FROM [TBCliente]
+													WHERE [ID] = @ID";
+
+        protected override string SelectCommand => @"SELECT
+														[ID],
+														[NOME],
+														[TELEFONE]
+													FROM
+														[TBCliente]
+													WHERE [ID] = @ID";
+
+        protected override string SelectAllCommand => @"SELECT
+															[ID],
+															[NOME],
+															[TELEFONE]
+														FROM
+															[TBCliente]";
+
+        protected override void ConfigurarParametros(Cliente cliente)
+        {
+            comandoBd.Parameters.Clear();
+            comandoBd.Parameters.AddWithValue("NOME", cliente.Nome);
+            comandoBd.Parameters.AddWithValue("TELEFONE", cliente.Telefone);
+        }
     }
 }

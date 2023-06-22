@@ -1,24 +1,30 @@
-﻿using PartyPlanner.Dominio.ModuloAluguel;
+﻿using PartyPlanner.Dados.Compartilhado;
+using PartyPlanner.Dominio.ModuloAluguel;
 
 namespace PartyPlanner.Dados.ModuloAluguel
 {
-    public class RepositorioAluguel : RepositorioBase<Aluguel>
+    public class RepositorioAluguel : RepositorioBaseSql<Aluguel>
     {
-        public RepositorioAluguel(DataContext dataContext) : base(dataContext)
-        {
-            if (dataContext.Alugueis.Count > 0)
-                id = dataContext.Alugueis.Max(x => x.id) + 1;
-        }
+        protected override string AddCommand => throw new NotImplementedException();
 
-        protected override List<Aluguel> ListaRegistros => dataContext.Alugueis;
+        protected override string EditCommand => throw new NotImplementedException();
+
+        protected override string DeleteCommand => throw new NotImplementedException();
+
+        protected override string SelectCommand => throw new NotImplementedException();
+
+        protected override string SelectAllCommand => throw new NotImplementedException();
 
         public void AtualizarStatusAluguel(Aluguel aluguelSelecionado, StatusAluguel statusSelecionado, DateTime? dataQuitacao)
         {
             aluguelSelecionado.StatusAluguel = statusSelecionado;
 
             aluguelSelecionado.DataQuitacao = dataQuitacao.HasValue ? dataQuitacao.Value : null;
+        }
 
-            dataContext.GravarRegistrosEmArquivoBIN();
+        protected override void ConfigurarParametros(Aluguel registro)
+        {
+            throw new NotImplementedException();
         }
     }
 }

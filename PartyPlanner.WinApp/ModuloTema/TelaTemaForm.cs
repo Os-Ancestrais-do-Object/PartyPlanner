@@ -22,7 +22,7 @@ namespace PartyPlanner.WinApp.ModuloTema
         {
             set
             {
-                txtId.Text = value.id.ToString();
+                txtId.Text = value.Id.ToString();
                 txtNome.Text = value.Nome;
             }
             get => _tema;
@@ -41,8 +41,8 @@ namespace PartyPlanner.WinApp.ModuloTema
 
             _tema = new Tema(txtNome.Text, 0);
 
-            if (_tema.id == 0)
-                _tema.id = int.Parse(txtId.Text);
+            if (_tema.Id == 0)
+                _tema.Id = int.Parse(txtId.Text);
         }
 
         private void ImplementarMetodos()

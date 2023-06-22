@@ -21,7 +21,7 @@ namespace PartyPlanner.WinApp.ModuloFesta
         {
             set
             {
-                txtId.Text = value.id.ToString();
+                txtId.Text = value.Id.ToString();
                 txtEndereco.Text = value.Endereco;
                 cbTema.Text = value.Tema.Nome;
                 txtData.Value = value.Data;
@@ -54,8 +54,8 @@ namespace PartyPlanner.WinApp.ModuloFesta
 
             _festa = new Festa(txtEndereco.Text, tema, txtData.Value, txtInicio.Value, txtFinal.Value, cliente);
 
-            if (_festa.id == 0)
-                _festa.id = int.Parse(txtId.Text);
+            if (_festa.Id == 0)
+                _festa.Id = int.Parse(txtId.Text);
         }
 
         private void AtualizarDataTema(Tema? tema)

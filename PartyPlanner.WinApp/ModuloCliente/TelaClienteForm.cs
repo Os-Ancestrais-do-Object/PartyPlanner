@@ -22,7 +22,7 @@ namespace PartyPlanner.WinApp.ModuloCliente
         {
             set
             {
-                txtId.Text = value.id.ToString();
+                txtId.Text = value.Id.ToString();
                 txtNome.Text = value.Nome;
                 txtTelefone.Text = value.Telefone;
             }
@@ -45,8 +45,8 @@ namespace PartyPlanner.WinApp.ModuloCliente
 
             _cliente = new Cliente(txtNome.Text, txtTelefone.Text);
 
-            if (_cliente.id == 0)
-                _cliente.id = int.Parse(txtId.Text);
+            if (_cliente.Id == 0)
+                _cliente.Id = int.Parse(txtId.Text);
         }
 
         private void ImplementarMetodos()

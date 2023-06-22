@@ -20,7 +20,7 @@ namespace PartyPlanner.WinApp.ModuloAluguel
         {
             set
             {
-                txtId.Text = value.id.ToString();
+                txtId.Text = value.Id.ToString();
                 //cbFesta.Text = value.Festa.Cliente.Nome;
                 txtValorCobrado.Text = value.ValorCobrado.ToString();
                 txtDesconto.Text = value.Desconto.ToString();
@@ -54,8 +54,8 @@ namespace PartyPlanner.WinApp.ModuloAluguel
 
             _aluguel = new Aluguel(festa, Convert.ToDecimal(txtValorCobrado.Text), txtDesconto.Value, Convert.ToDecimal(txtSinal.Text), Convert.ToDecimal(txtValorTotal.Text), StatusAluguel.EmAberto);
 
-            if (_aluguel.id == 0)
-                _aluguel.id = int.Parse(txtId.Text);
+            if (_aluguel.Id == 0)
+                _aluguel.Id = int.Parse(txtId.Text);
         }
 
         private void ImplementarMetodos()

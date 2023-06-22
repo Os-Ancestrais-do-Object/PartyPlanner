@@ -20,14 +20,14 @@ namespace PartyPlanner.Infra.Dados.Arquivo.Compartilhado
 
         public void Adicionar(TEntidade registro)
         {
-            registro.id = id; id++;
+            registro.Id = id; id++;
             ListaRegistros.Add(registro);
             dataContext.GravarRegistrosEmArquivoBIN();
         }
 
         public void Editar(TEntidade novoRegistro)
         {
-            TEntidade registroAntigo = SelecionarId(novoRegistro.id);
+            TEntidade registroAntigo = SelecionarId(novoRegistro.Id);
 
             foreach (var atributo in registroAntigo.GetType().GetFields())
             {
@@ -53,7 +53,7 @@ namespace PartyPlanner.Infra.Dados.Arquivo.Compartilhado
 
         public TEntidade? SelecionarId(int idEscolhido)
         {
-            return ListaRegistros.Find(e => e.id == idEscolhido);
+            return ListaRegistros.Find(e => e.Id == idEscolhido);
         }
 
         public List<TEntidade> ObterListaRegistros()

@@ -21,7 +21,7 @@ namespace PartyPlanner.WinApp.ModuloCliente
             {
                 DataGridViewRow row = new();
 
-                row.CreateCells(gridCliente, item.id, item.Nome, item.Telefone);
+                row.CreateCells(gridCliente, item.Id, item.Nome, item.Telefone);
 
                 row.Cells[0].Tag = item;
 

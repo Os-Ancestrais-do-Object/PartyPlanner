@@ -48,7 +48,7 @@ namespace PartyPlanner.ConsoleApp
 
             object id = comando.ExecuteScalar();
 
-            cliente.id = Convert.ToInt32(id);
+            cliente.Id = Convert.ToInt32(id);
 
             conectar.Close();
         }
@@ -105,7 +105,7 @@ namespace PartyPlanner.ConsoleApp
             {
                 cliente = new Cliente(leitor[1].ToString(), leitor[2].ToString());
 
-                cliente.id = Convert.ToInt32(leitor[0]);
+                cliente.Id = Convert.ToInt32(leitor[0]);
             }
 
             return cliente;
@@ -128,7 +128,7 @@ namespace PartyPlanner.ConsoleApp
             {
                 Cliente cliente = new Cliente(leitor[1].ToString(), leitor[2].ToString());
 
-                cliente.id = Convert.ToInt32(leitor[0]);
+                cliente.Id = Convert.ToInt32(leitor[0]);
 
                 listaClientes.Add(cliente);
             }

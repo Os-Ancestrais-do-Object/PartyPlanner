@@ -1,11 +1,12 @@
-﻿using PartyPlanner.Dominio.Compartilhado;
+﻿using PartyPlanner.Dados.Compartilhado;
+using PartyPlanner.Dominio.Compartilhado;
 using PartyPlanner.Infra.Dados.Arquivo.Compartilhado;
 
 namespace PartyPlanner.WinApp.Compartilhado
 {
     public abstract class ControladorBase<TEntidade, TRepositorio, TTabela, TTela, TRepositorio2, TRepositorio3> : IControladorBase
-        where TEntidade : Entidade<TEntidade>
-        where TRepositorio : RepositorioBase<TEntidade>
+        where TEntidade : Entidade<TEntidade>, new()
+        where TRepositorio : RepositorioBaseSql<TEntidade>
         where TTabela : ITabelaBase<TEntidade>, new()
         where TTela : ITelaBase<TEntidade>, new()
     {
@@ -85,7 +86,7 @@ namespace PartyPlanner.WinApp.Compartilhado
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                _repositorio.Editar(tela.Entidade);
+                _repositorio.Editar(tela.Entidade, entidade.Id);
 
             }
             CarregarRegistros();
@@ -102,7 +103,7 @@ namespace PartyPlanner.WinApp.Compartilhado
 
             if (opcaoEscolhida == DialogResult.Yes)
             {
-                _repositorio.Excluir(entidade);
+                _repositorio.Excluir(entidade, entidade.Id);
 
                 if (onAtualizarItensReferentes != null)
                     onAtualizarItensReferentes(entidade);
