@@ -106,7 +106,7 @@ namespace PartyPlanner.Dados.Compartilhado
                     {
                         if (item.Name.ToUpper() == reader.GetName(i).ToUpper())
                         {
-                            item.SetValue(entidade, itens[i]);
+                            item.SetValue(entidade, itens[i] == DBNull.Value ? null : itens[i]);
                             break;
                         }
 
@@ -161,7 +161,7 @@ namespace PartyPlanner.Dados.Compartilhado
                     {
                         if (item.Name.ToUpper() == reader.GetName(i).ToUpper())
                         {
-                            item.SetValue(entidade, itens[i]);
+                            item.SetValue(entidade, itens[i] == DBNull.Value ? null : itens[i]);
                             break;
                         }
 

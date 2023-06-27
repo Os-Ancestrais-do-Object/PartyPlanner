@@ -12,8 +12,9 @@ namespace PartyPlanner.Dados.ModuloAluguel
                                                         ,[VALORCOBRADO]
                                                         ,[DESCONTO]
                                                         ,[SINAL]
-                                                        ,[VALORTOTAL]                                                        ,[VALORTOTAL]
+                                                        ,[VALORTOTAL]
                                                         ,[STATUSALUGUEL]
+                                                        ,[DATAQUITACAO]
                                                 )
                                                 VALUES
                                                 (
@@ -23,6 +24,7 @@ namespace PartyPlanner.Dados.ModuloAluguel
                                                         ,@SINAL
                                                         ,@VALORTOTAL
                                                         ,@STATUSALUGUEL
+                                                        ,@DATAQUITACAO
                                                 )
                                                 SELECT SCOPE_IDENTITY();";
 
@@ -34,6 +36,7 @@ namespace PartyPlanner.Dados.ModuloAluguel
                                                          ,[SINAL] =         @SINAL
                                                          ,[VALORTOTAL] =    @VALORTOTAL
                                                          ,[STATUSALUGUEL] = @STATUSALUGUEL
+                                                         ,[DATAQUITACAO] =  @DATAQUITACAO
 
                                                     WHERE [ID] =            @ID";
 
@@ -47,6 +50,7 @@ namespace PartyPlanner.Dados.ModuloAluguel
                                                            ,[VALORTOTAL]
                                                            ,[ID]
                                                            ,[STATUSALUGUEL]
+                                                           ,[DATAQUITACAO]
 
                                                           FROM [DBO].[TBALUGUEL]
 
@@ -59,6 +63,7 @@ namespace PartyPlanner.Dados.ModuloAluguel
                                                               ,[VALORTOTAL]
                                                               ,[ID]
                                                               ,[STATUSALUGUEL]
+                                                              ,[DATAQUITACAO]
 
                                                           FROM [DBO].[TBALUGUEL]";
 
@@ -80,6 +85,7 @@ namespace PartyPlanner.Dados.ModuloAluguel
             comandoBd.Parameters.AddWithValue("SINAL", aluguel.Sinal);
             comandoBd.Parameters.AddWithValue("VALORTOTAL", aluguel.ValorTotal);
             comandoBd.Parameters.AddWithValue("STATUSALUGUEL", ((int)aluguel.StatusAluguel));
+            comandoBd.Parameters.AddWithValue("DATAQUITACAO", aluguel.DataQuitacao.HasValue ? aluguel.DataQuitacao.Value : DBNull.Value);
         }
     }
 }
