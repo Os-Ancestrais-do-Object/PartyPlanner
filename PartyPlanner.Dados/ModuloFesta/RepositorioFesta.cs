@@ -8,71 +8,77 @@ namespace PartyPlanner.Dados.ModuloFesta
     {
         protected List<Festa> ListaRegistros => null;
 
-        protected override string AddCommand => @"INSERT INTO [TBFesta]
-	                                            (
-		                                            [ENDERECO],
-		                                            [DATA],
-		                                            [HORAINICIO],
-		                                            [HORAFINAL],
-		                                            [CLIENTE]
-	                                            )
-	                                            VALUES
-	                                            (
-		                                            @ENDERECO,
-		                                            @DATA,
-		                                            @HORAINICIO,
-		                                            @HORAFINAL,
-		                                            @CLIENTE
-	                                            )
-                                                Select Scope_Identity();";
+        protected override string AddCommand => @"INSERT INTO [DBO].[TBFESTA]
+                                                    (
+                                                           [ENDERECO]
+                                                          ,[TEMA_ID]
+                                                          ,[DATA]
+                                                          ,[HORAINICIO]
+                                                          ,[HORAFINAL]
+                                                          ,[CLIENTE_ID]
+                                                    )
+                                                    VALUES
+                                                    (
+                                                            @ENDERECO
+                                                           ,@TEMA_ID
+                                                           ,@DATA
+                                                           ,@HORAINICIO
+                                                           ,@HORAFINAL
+                                                           ,@CLIENTE_ID
+                                                    )
+                                                    SELECT SCOPE_IDENTITY();";
 
-        protected override string EditCommand => @"UPDATE [TBFesta]
+        protected override string EditCommand => @"UPDATE [DBO].[TBFesta]
 													SET
-														[ENDERECO] = @ENDERECO,
-														[DATA] = @DATA,
-														[HORAINICIO] = @HORAINICIO,
-														[HORAFINAL] = @HORAFINAL,
-														[CLIENTE] = @CLIENTE
+														 [ENDERECO] =       @ENDERECO
+														,[TEMA_ID] =        @TEMA_ID
+														,[DATA] =           @DATA
+														,[HORAINICIO] =     @HORAINICIO
+														,[HORAFINAL] =      @HORAFINAL
+														,[CLIENTE_ID] =     @CLIENTE_ID
 													WHERE
-														[ID] = @ID";
+														[ID] =              @ID";
 
-        protected override string DeleteCommand => @"DELETE FROM [TBFesta]
-													WHERE [ID] = @ID";
+        protected override string DeleteCommand => @"DELETE FROM [DBO].[TBFesta]
+													WHERE [ID] =            @ID";
 
         protected override string SelectCommand => @"SELECT
-														[ID],
-														[ENDERECO],
-														[DATA],
-														[HORAINICIO],
-														[HORAFINAL],
-														[CLIENTE]
+														 [ID]
+														,[ENDERECO]
+														,[TEMA_ID]
+														,[DATA]
+														,[HORAINICIO]
+														,[HORAFINAL]
+														,[CLIENTE_ID]
 													FROM
 														[TBFesta]
-													WHERE [ID] = @ID";
+													WHERE [ID] =            @ID";
 
-        protected override string SelectAllCommand => @"SELECT
-															[ID],
-															[ENDERECO],
-															[DATA],
-															[HORAINICIO],
-															[HORAFINAL],
-															[CLIENTE]
+        protected override string SelectAllCommand => @"SELECT 
+														   [ID]
+														  ,[ENDERECO]
+														  ,[TEMA_ID]
+														  ,[DATA]
+														  ,[HORAINICIO]
+														  ,[HORAFINAL]
+														  ,[CLIENTE_ID]
 														FROM
-															[TBFesta]";
+															[TBFESTA]";
 
         protected override void ConfigurarParametros(Festa festa)
         {
             comandoBd.Parameters.Clear();
             comandoBd.Parameters.AddWithValue("ENDERECO", festa.Endereco);
+            comandoBd.Parameters.AddWithValue("TEMA_ID", festa.Tema.Id);
             comandoBd.Parameters.AddWithValue("DATA", festa.Data);
             comandoBd.Parameters.AddWithValue("HORAINICIO", festa.HoraInicio);
             comandoBd.Parameters.AddWithValue("HORAFINAL", festa.HoraFinal);
-            comandoBd.Parameters.AddWithValue("CLIENTE", festa.Cliente);
+            comandoBd.Parameters.AddWithValue("CLIENTE_ID", festa.Cliente.Id);
         }
 
         public List<Festa> ObterFestasSemAluguel()
         {
-            return ListaRegistros.FindAll(x => x.AluguelAtivo == false);
+            return ObterListaRegistros().FindAll(x => x.AluguelAtivo == false);
         }
     }
 }

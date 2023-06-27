@@ -1,5 +1,6 @@
 ﻿using PartyPlanner.Dados.Compartilhado;
 using PartyPlanner.Dominio.Compartilhado;
+using PartyPlanner.Dominio.ModuloCliente;
 using PartyPlanner.Dominio.ModuloTema;
 using PartyPlanner.Dominio.ModuloTema.ModuloItem;
 
@@ -7,24 +8,54 @@ namespace PartyPlanner.Dados.ModuloTema
 {
     public class RepositorioTema : RepositorioBaseSql<Tema>
     {
-        protected override string AddCommand => throw new NotImplementedException();
+        protected override string AddCommand => @"INSERT INTO [DBO].[TBTEMA]
+                                                        (
+                                                             [NOME]
+                                                            ,[VALORTOTAL]
+                                                        )
 
-        protected override string EditCommand => throw new NotImplementedException();
+                                                        VALUES
+                                                        (
+                                                             @NOME
+                                                            ,@VALORTOTAL
+                                                        )
+                                                        SELECT SCOPE_IDENTITY();";
 
-        protected override string DeleteCommand => throw new NotImplementedException();
+        protected override string EditCommand => @"UPDATE [DBO].[TBTEMA]
 
-        protected override string SelectCommand => throw new NotImplementedException();
+                                                      SET [NOME] =          @NOME
+                                                         ,[VALORTOTAL] =    @VALORTOTAL
 
-        protected override string SelectAllCommand => throw new NotImplementedException();
+                                                    WHERE [ID] = @ID";
+
+        protected override string DeleteCommand => @"DELETE FROM [DBO].[TBTema]
+                                                           WHERE [ID] =     @ID";
+
+        protected override string SelectCommand => @"SELECT
+														 [NOME]
+														,[VALORTOTAL]
+                                                        ,[ID]
+
+													FROM [DBO].[TBTEMA]
+
+													WHERE [ID] =		@ID";
+
+        protected override string SelectAllCommand => @"SELECT [NOME]
+                                                              ,[VALORTOTAL]
+                                                              ,[ID]
+
+                                                          FROM [DBO].[TBTEMA]";
 
         public void AdicionarItemTema(Tema temaSelecionado, List<ItemTema> itens)
         {
             temaSelecionado.Itens = itens;
         }
 
-        protected override void ConfigurarParametros(Tema registro)
+        protected override void ConfigurarParametros(Tema tema)
         {
-            throw new NotImplementedException();
+            comandoBd.Parameters.Clear();
+            comandoBd.Parameters.AddWithValue("NOME", tema.Nome);
+            comandoBd.Parameters.AddWithValue("VALORTOTAL", tema.ValorTotal);
         }
     }
 }

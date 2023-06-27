@@ -5,7 +5,7 @@ namespace PartyPlanner.Dados.ModuloCliente
 {
     public class RepositorioCliente : RepositorioBaseSql<Cliente>
     {
-        protected override string AddCommand => @"INSERT INTO [TBCliente]
+        protected override string AddCommand => @"INSERT INTO [DBO].[TBCLIENTE]
 	                                            (
 		                                            [NOME],
 		                                            [TELEFONE]
@@ -15,17 +15,17 @@ namespace PartyPlanner.Dados.ModuloCliente
 		                                            @NOME,
 		                                            @TELEFONE
 	                                            )
-                                                Select Scope_Identity();";
+                                                SELECT SCOPE_IDENTITY();";
 
-        protected override string EditCommand => @"UPDATE [TBCliente]
+        protected override string EditCommand => @"UPDATE [DBO].[TBCliente]
 													SET
-														[NOME] = @NOME,
-														[TELEFONE] = @TELEFONE
+														[NOME] =		@NOME,
+														[TELEFONE] =	@TELEFONE
 													WHERE
-														[ID] = @ID";
+														[ID] =			@ID";
 
-        protected override string DeleteCommand => @"DELETE FROM [TBCliente]
-													WHERE [ID] = @ID";
+        protected override string DeleteCommand => @"DELETE FROM [DBO].[TBCliente]
+													WHERE [ID] =		@ID";
 
         protected override string SelectCommand => @"SELECT
 														[ID],
@@ -33,7 +33,7 @@ namespace PartyPlanner.Dados.ModuloCliente
 														[TELEFONE]
 													FROM
 														[TBCliente]
-													WHERE [ID] = @ID";
+													WHERE [ID] =		@ID";
 
         protected override string SelectAllCommand => @"SELECT
 															[ID],

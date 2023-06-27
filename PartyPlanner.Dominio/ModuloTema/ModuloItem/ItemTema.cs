@@ -1,7 +1,9 @@
-﻿namespace PartyPlanner.Dominio.ModuloTema.ModuloItem
+﻿using PartyPlanner.Dominio.Compartilhado;
+
+namespace PartyPlanner.Dominio.ModuloTema.ModuloItem
 {
     [Serializable]
-    public class ItemTema
+    public class ItemTema : Entidade<ItemTema>
     {
         public string Descricao { get; set; }
         public decimal Valor { get; set; }

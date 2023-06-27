@@ -1,7 +1,9 @@
 ﻿using Microsoft.Data.SqlClient;
-using Microsoft.Win32;
+using PartyPlanner.Dados.ModuloAluguel;
+using PartyPlanner.Dados.ModuloCliente;
+using PartyPlanner.Dados.ModuloFesta;
+using PartyPlanner.Dados.ModuloTema;
 using PartyPlanner.Dominio.Compartilhado;
-using System.Data;
 using System.Reflection;
 
 namespace PartyPlanner.Dados.Compartilhado
@@ -45,7 +47,7 @@ namespace PartyPlanner.Dados.Compartilhado
 
         protected abstract void ConfigurarParametros(TEntidade registro);
 
-        public void Editar(TEntidade novoRegistro, int idSelecionado)
+        public void Editar(TEntidade novoRegistro)
         {
             conectarBd.Open();
 
@@ -53,14 +55,14 @@ namespace PartyPlanner.Dados.Compartilhado
 
             ConfigurarParametros(novoRegistro);
 
-            comandoBd.Parameters.AddWithValue("ID", idSelecionado);
+            comandoBd.Parameters.AddWithValue("ID", novoRegistro.Id);
 
             comandoBd.ExecuteNonQuery();
 
             conectarBd.Close();
         }
 
-        public void Excluir(TEntidade registroSelecionado, int idSelecionado)
+        public void Excluir(TEntidade registroSelecionado)
         {
             conectarBd.Open();
 
@@ -68,7 +70,7 @@ namespace PartyPlanner.Dados.Compartilhado
 
             comandoBd.Parameters.Clear();
 
-            comandoBd.Parameters.AddWithValue("ID", idSelecionado);
+            comandoBd.Parameters.AddWithValue("ID", registroSelecionado.Id);
 
             comandoBd.ExecuteNonQuery();
 
@@ -77,6 +79,11 @@ namespace PartyPlanner.Dados.Compartilhado
 
         public List<TEntidade> ObterListaRegistros()
         {
+            RepositorioAluguel _repositorioAluguel = new();
+            RepositorioCliente _repositorioCliente = new();
+            RepositorioFesta _repositorioFesta = new();
+            RepositorioTema _repositorioTema = new();
+
             conectarBd.Open();
 
             List<TEntidade> lista = new();
@@ -97,10 +104,21 @@ namespace PartyPlanner.Dados.Compartilhado
                 {
                     foreach (var item in propriedades)
                     {
-                        if(item.Name.ToUpper() == reader.GetName(i).ToUpper())
+                        if (item.Name.ToUpper() == reader.GetName(i).ToUpper())
                         {
                             item.SetValue(entidade, itens[i]);
                             break;
+                        }
+
+                        if (item.Name.ToUpper() + "_ID" == reader.GetName(i).ToUpper())
+                        {
+                            switch (reader.GetName(i).ToUpper())
+                            {
+                                case "ALUGUEL_ID": item.SetValue(entidade, _repositorioAluguel.SelecionarId((int)itens[i])); break;
+                                case "CLIENTE_ID": item.SetValue(entidade, _repositorioCliente.SelecionarId((int)itens[i])); break;
+                                case "FESTA_ID": item.SetValue(entidade, _repositorioFesta.SelecionarId((int)itens[i])); break;
+                                case "TEMA_ID": item.SetValue(entidade, _repositorioTema.SelecionarId((int)itens[i])); break;
+                            }
                         }
                     }
                 }
@@ -111,6 +129,59 @@ namespace PartyPlanner.Dados.Compartilhado
             conectarBd.Close();
 
             return lista;
+        }
+
+        public TEntidade? SelecionarId(int idSelecionado)
+        {
+            RepositorioAluguel _repositorioAluguel = new();
+            RepositorioCliente _repositorioCliente = new();
+            RepositorioFesta _repositorioFesta = new();
+            RepositorioTema _repositorioTema = new();
+
+            conectarBd.Open();
+
+            TEntidade entidade = new();
+
+            PropertyInfo[] propriedades = entidade.GetType().GetProperties();
+
+            comandoBd.CommandText = SelectCommand;
+
+            comandoBd.Parameters.AddWithValue("ID", idSelecionado);
+
+            SqlDataReader reader = comandoBd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                object[] itens = new object[reader.FieldCount];
+                reader.GetValues(itens);
+
+                for (int i = 0; i < itens.Length; i++)
+                {
+                    foreach (var item in propriedades)
+                    {
+                        if (item.Name.ToUpper() == reader.GetName(i).ToUpper())
+                        {
+                            item.SetValue(entidade, itens[i]);
+                            break;
+                        }
+
+                        if (item.Name.ToUpper() + "_ID" == reader.GetName(i).ToUpper())
+                        {
+                            switch (reader.GetName(i).ToUpper())
+                            {
+                                case "ALUGUEL_ID": item.SetValue(entidade, _repositorioAluguel.SelecionarId((int)itens[i])); break;
+                                case "CLIENTE_ID": item.SetValue(entidade, _repositorioCliente.SelecionarId((int)itens[i])); break;
+                                case "FESTA_ID": item.SetValue(entidade, _repositorioFesta.SelecionarId((int)itens[i])); break;
+                                case "TEMA_ID": item.SetValue(entidade, _repositorioTema.SelecionarId((int)itens[i])); break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            conectarBd.Close();
+
+            return entidade;
         }
     }
 }

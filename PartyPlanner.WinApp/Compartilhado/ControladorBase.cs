@@ -86,7 +86,7 @@ namespace PartyPlanner.WinApp.Compartilhado
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                _repositorio.Editar(tela.Entidade, entidade.Id);
+                _repositorio.Editar(tela.Entidade);
 
             }
             CarregarRegistros();
@@ -103,7 +103,7 @@ namespace PartyPlanner.WinApp.Compartilhado
 
             if (opcaoEscolhida == DialogResult.Yes)
             {
-                _repositorio.Excluir(entidade, entidade.Id);
+                _repositorio.Excluir(entidade);
 
                 if (onAtualizarItensReferentes != null)
                     onAtualizarItensReferentes(entidade);
