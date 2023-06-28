@@ -45,8 +45,6 @@ namespace PartyPlanner.Dados.Compartilhado
             conectarBd.Close();
         }
 
-        protected abstract void ConfigurarParametros(TEntidade registro);
-
         public void Editar(TEntidade novoRegistro)
         {
             conectarBd.Open();
@@ -79,11 +77,6 @@ namespace PartyPlanner.Dados.Compartilhado
 
         public List<TEntidade> ObterListaRegistros()
         {
-            RepositorioAluguel _repositorioAluguel = new();
-            RepositorioCliente _repositorioCliente = new();
-            RepositorioFesta _repositorioFesta = new();
-            RepositorioTema _repositorioTema = new();
-
             conectarBd.Open();
 
             List<TEntidade> lista = new();
@@ -95,33 +88,8 @@ namespace PartyPlanner.Dados.Compartilhado
             while (reader.Read())
             {
                 TEntidade entidade = new();
-                PropertyInfo[] propriedades = entidade.GetType().GetProperties();
 
-                object[] itens = new object[reader.FieldCount];
-                reader.GetValues(itens);
-
-                for (int i = 0; i < itens.Length; i++)
-                {
-                    foreach (var item in propriedades)
-                    {
-                        if (item.Name.ToUpper() == reader.GetName(i).ToUpper())
-                        {
-                            item.SetValue(entidade, itens[i] == DBNull.Value ? null : itens[i]);
-                            break;
-                        }
-
-                        if (item.Name.ToUpper() + "_ID" == reader.GetName(i).ToUpper())
-                        {
-                            switch (reader.GetName(i).ToUpper())
-                            {
-                                case "ALUGUEL_ID": item.SetValue(entidade, _repositorioAluguel.SelecionarId((int)itens[i])); break;
-                                case "CLIENTE_ID": item.SetValue(entidade, _repositorioCliente.SelecionarId((int)itens[i])); break;
-                                case "FESTA_ID": item.SetValue(entidade, _repositorioFesta.SelecionarId((int)itens[i])); break;
-                                case "TEMA_ID": item.SetValue(entidade, _repositorioTema.SelecionarId((int)itens[i])); break;
-                            }
-                        }
-                    }
-                }
+                ObterPropriedadesEntidade(entidade, reader);
 
                 lista.Add(entidade);
             }
@@ -131,18 +99,11 @@ namespace PartyPlanner.Dados.Compartilhado
             return lista;
         }
 
-        public TEntidade? SelecionarId(int idSelecionado)
+        public TEntidade? SelecionarPorId(int idSelecionado)
         {
-            RepositorioAluguel _repositorioAluguel = new();
-            RepositorioCliente _repositorioCliente = new();
-            RepositorioFesta _repositorioFesta = new();
-            RepositorioTema _repositorioTema = new();
-
             conectarBd.Open();
 
             TEntidade entidade = new();
-
-            PropertyInfo[] propriedades = entidade.GetType().GetProperties();
 
             comandoBd.CommandText = SelectCommand;
 
@@ -152,36 +113,16 @@ namespace PartyPlanner.Dados.Compartilhado
 
             if (reader.Read())
             {
-                object[] itens = new object[reader.FieldCount];
-                reader.GetValues(itens);
-
-                for (int i = 0; i < itens.Length; i++)
-                {
-                    foreach (var item in propriedades)
-                    {
-                        if (item.Name.ToUpper() == reader.GetName(i).ToUpper())
-                        {
-                            item.SetValue(entidade, itens[i] == DBNull.Value ? null : itens[i]);
-                            break;
-                        }
-
-                        if (item.Name.ToUpper() + "_ID" == reader.GetName(i).ToUpper())
-                        {
-                            switch (reader.GetName(i).ToUpper())
-                            {
-                                case "ALUGUEL_ID": item.SetValue(entidade, _repositorioAluguel.SelecionarId((int)itens[i])); break;
-                                case "CLIENTE_ID": item.SetValue(entidade, _repositorioCliente.SelecionarId((int)itens[i])); break;
-                                case "FESTA_ID": item.SetValue(entidade, _repositorioFesta.SelecionarId((int)itens[i])); break;
-                                case "TEMA_ID": item.SetValue(entidade, _repositorioTema.SelecionarId((int)itens[i])); break;
-                            }
-                        }
-                    }
-                }
+                ObterPropriedadesEntidade(entidade, reader);
             }
 
             conectarBd.Close();
 
             return entidade;
         }
+
+        protected abstract void ObterPropriedadesEntidade(TEntidade entidade, SqlDataReader reader);
+
+        protected abstract void ConfigurarParametros(TEntidade registro);
     }
 }

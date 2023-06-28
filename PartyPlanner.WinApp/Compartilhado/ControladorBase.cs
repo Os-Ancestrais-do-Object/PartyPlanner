@@ -1,6 +1,7 @@
 ﻿using PartyPlanner.Dados.Compartilhado;
 using PartyPlanner.Dominio.Compartilhado;
 using PartyPlanner.Infra.Dados.Arquivo.Compartilhado;
+using System.Diagnostics;
 
 namespace PartyPlanner.WinApp.Compartilhado
 {
@@ -119,7 +120,10 @@ namespace PartyPlanner.WinApp.Compartilhado
 
         public virtual void CarregarRegistros()
         {
+            Stopwatch contador = Stopwatch.StartNew();
             _tabela.AtualizarLista(_repositorio.ObterListaRegistros());
+            contador.Stop();
+            MessageBox.Show((contador.ElapsedMilliseconds/1000).ToString());
         }
 
         public virtual string ObterTipoCadastro()

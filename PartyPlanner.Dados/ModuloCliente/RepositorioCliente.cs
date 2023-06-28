@@ -1,4 +1,5 @@
-﻿using PartyPlanner.Dados.Compartilhado;
+﻿using Microsoft.Data.SqlClient;
+using PartyPlanner.Dados.Compartilhado;
 using PartyPlanner.Dominio.ModuloCliente;
 
 namespace PartyPlanner.Dados.ModuloCliente
@@ -47,6 +48,17 @@ namespace PartyPlanner.Dados.ModuloCliente
             comandoBd.Parameters.Clear();
             comandoBd.Parameters.AddWithValue("NOME", cliente.Nome);
             comandoBd.Parameters.AddWithValue("TELEFONE", cliente.Telefone);
+        }
+
+        protected override void ObterPropriedadesEntidade(Cliente cliente, SqlDataReader reader)
+        {
+			int id = (int)reader["ID"];
+            string nome = Convert.ToString(reader["NOME"])!;
+			string telefone = Convert.ToString(reader["TELEFONE"])!;
+
+            cliente.Id = id;
+			cliente.Nome = nome;
+			cliente.Telefone = telefone;
         }
     }
 }

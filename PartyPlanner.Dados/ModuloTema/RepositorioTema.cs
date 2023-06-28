@@ -1,4 +1,5 @@
-﻿using PartyPlanner.Dados.Compartilhado;
+﻿using Microsoft.Data.SqlClient;
+using PartyPlanner.Dados.Compartilhado;
 using PartyPlanner.Dominio.Compartilhado;
 using PartyPlanner.Dominio.ModuloCliente;
 using PartyPlanner.Dominio.ModuloTema;
@@ -56,6 +57,17 @@ namespace PartyPlanner.Dados.ModuloTema
             comandoBd.Parameters.Clear();
             comandoBd.Parameters.AddWithValue("NOME", tema.Nome);
             comandoBd.Parameters.AddWithValue("VALORTOTAL", tema.ValorTotal);
+        }
+
+        protected override void ObterPropriedadesEntidade(Tema tema, SqlDataReader reader)
+        {
+            int id = (int)reader["ID"];
+            string nome = Convert.ToString(reader["NOME"])!;
+            decimal valorTotal = Convert.ToDecimal(reader["VALORTOTAL"]);
+
+            tema.Id = id;
+            tema.Nome = nome;
+            tema.ValorTotal = valorTotal;
         }
     }
 }
